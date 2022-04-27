@@ -1,7 +1,7 @@
 .onAttach <- function(libname,pkgname) {
 
   do_color <- crayon::make_style("#FF4141")
-  this_pkg <- 'BatchGetSymbols'
+  this_pkg <- 'vdr'
 
   data_files <- list.files(
     system.file('extdata/data', package = 'vdr')

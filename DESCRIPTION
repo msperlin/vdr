@@ -12,7 +12,7 @@ BugReports: https://github.com/msperlin/vdr/issues
 URL: https://github.com/msperlin/vdr/
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.2
 Depends: R (>= 3.5.0)
 Imports: 
   utils,
@@ -22,4 +22,5 @@ Imports:
   stats,
   crayon,
   stringr,
-  tidyr
+  tidyr,
+  scales
