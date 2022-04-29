@@ -9,13 +9,13 @@
 #' format_cash(10)
 format_cash <- function(x) {
 
-  x_formatted <- scales::dollar(x,
-                                prefix = 'R$ ',
-                                decimal.mark = ',',
-                                big.mark = '.',
-                                largest_with_cents = Inf)
+  x_fmt <- scales::dollar(x,
+                          prefix = 'R$ ',
+                          decimal.mark = ',',
+                          big.mark = '.',
+                          largest_with_cents = Inf)
 
-  return(x_formatted)
+  return(x_fmt)
 }
 
 
@@ -31,9 +31,9 @@ format_cash <- function(x) {
 format_percent <- function(x) {
 
   x_fmt <- scales::percent(x,
-                         accuracy = 0.01,
-                         decimal.mark = ',',
-                         big.mark = '.')
+                           accuracy = 0.01,
+                           decimal.mark = ',',
+                           big.mark = '.')
 
   return(x_fmt)
 }

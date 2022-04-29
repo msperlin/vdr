@@ -23,9 +23,15 @@ Imports:
   stringr,
   tidyr,
   scales,
-  ggplot2
+  ggplot2,
+  cli, 
+  fs,
+  readxl
 Remotes:
   msperlin/vdr,
   msperlin/yfR,
   clauswilke/dviz.supp,
   clauswilke/colorblindr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

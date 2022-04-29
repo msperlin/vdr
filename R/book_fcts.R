@@ -32,10 +32,12 @@ vdr_get_links_book <- function() {
 #' \dontrun{
 #' flag <- vdr_get_book_files()
 #' }
-vdr_get_book_files <- function(path_to_copy = '~') {
+vdr_get_book_files <- function(path_to_copy = '~/vdr-files') {
 
   if (!dir.exists(path_to_copy)) {
-    stop(paste0('Path ', path_to_copy, ' does not exists. Perhaps create it ?'))
+
+    cli::cli_alert_info('Path {path_to_copy} does not exists and is created.')
+    fs::dir_create(path_to_copy, recurse = TRUE)
   }
 
   # data files

@@ -4,7 +4,7 @@
 \alias{vdr_get_book_files}
 \title{Copy all book files to local folder}
 \usage{
-vdr_get_book_files(path_to_copy = "~")
+vdr_get_book_files(path_to_copy = "~/vdr-files")
 }
 \arguments{
 \item{path_to_copy}{Path to copy all the book files}
