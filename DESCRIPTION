@@ -24,3 +24,8 @@ Imports:
   stringr,
   tidyr,
   scales
+Remotes:
+  msperlin/vdr,
+  msperlin/yfR,
+  clauswilke/dviz.supp,
+  clauswilke/colorblindr
