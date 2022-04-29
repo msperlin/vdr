@@ -22,7 +22,8 @@ Imports:
   crayon,
   stringr,
   tidyr,
-  scales
+  scales,
+  ggplot2
 Remotes:
   msperlin/vdr,
   msperlin/yfR,

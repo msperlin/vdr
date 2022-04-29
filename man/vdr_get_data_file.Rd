@@ -7,7 +7,7 @@
 vdr_get_data_file(name_dataset)
 }
 \arguments{
-\item{name_dataset}{Name of the dataset filename (see \link{afedR_list_available_data} for more details)}
+\item{name_dataset}{Name of the dataset filename (see \link{vdr_list_available_data} for more details)}
 }
 \value{
 A path to the data file
@@ -17,5 +17,5 @@ This is a helper function of book "Analyzing Financial and Economic Data with R"
 With this function you'll be able to read the tables used in the book using only the filenames.
 }
 \examples{
-path_to_file <- afedR_get_data_file('grunfeld.csv')
+path_to_file <- vdr_get_data_file('FTSE.csv')
 }

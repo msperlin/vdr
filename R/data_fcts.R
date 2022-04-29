@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' df_data <- afedR_list_available_data()
+#' df_data <- vdr_list_available_data()
 vdr_list_available_data <- function(be_silent = FALSE) {
 
   path_data <- system.file('extdata/data', package = 'vdr')
@@ -25,13 +25,13 @@ vdr_list_available_data <- function(be_silent = FALSE) {
 #' This is a helper function of book "Analyzing Financial and Economic Data with R" by Marcelo S. Perlin.
 #' With this function you'll be able to read the tables used in the book using only the filenames.
 #'
-#' @param name_dataset Name of the dataset filename (see \link{afedR_list_available_data} for more details)
+#' @param name_dataset Name of the dataset filename (see \link{vdr_list_available_data} for more details)
 #'
 #' @return A path to the data file
 #' @export
 #'
 #' @examples
-#' path_to_file <- afedR_get_data_file('grunfeld.csv')
+#' path_to_file <- vdr_get_data_file('FTSE.csv')
 vdr_get_data_file <- function(name_dataset) {
 
   #if (!(name_dataset %in% df_available$file_name)) {

@@ -18,6 +18,6 @@ separated by directories including R code, data, slides and end-chapter exercise
 }
 \examples{
 \dontrun{
-flag <- afedR_get_book_files()
+flag <- vdr_get_book_files()
 }
 }

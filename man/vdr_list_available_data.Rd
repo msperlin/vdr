@@ -16,5 +16,5 @@ A dataframe with the data information
 This function will list all available datasets from the book. It also includes a description and origin, if applicable.
 }
 \examples{
-df_data <- afedR_list_available_data()
+df_data <- vdr_list_available_data()
 }

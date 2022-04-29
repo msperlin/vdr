@@ -7,7 +7,7 @@
 #'
 #' @examples
 #'
-#' print(afedR_get_links_book())
+#' print(vdr_get_links_book())
 vdr_get_links_book <- function() {
 
   my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/2020_book-afedr-en/',
@@ -30,7 +30,7 @@ vdr_get_links_book <- function() {
 #'
 #' @examples
 #' \dontrun{
-#' flag <- afedR_get_book_files()
+#' flag <- vdr_get_book_files()
 #' }
 vdr_get_book_files <- function(path_to_copy = '~') {
 

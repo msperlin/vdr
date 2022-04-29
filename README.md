@@ -1,5 +1,9 @@
 # Repository for R package vdr
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/msperlin/vdr/workflows/R-CMD-check/badge.svg)](https://github.com/msperlin/vdr/actions)
+<!-- badges: end -->
+
 Includes several functions related to book "Visualização de Dados com o R", to be published, hopefully, in mid 2021. 
 
 ## Installation
