@@ -7,7 +7,7 @@
 format_percent(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{a number}
 }
 \value{
 formatted string

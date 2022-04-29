@@ -2,18 +2,18 @@
 % Please edit documentation in R/format.R
 \name{format_date}
 \alias{format_date}
-\title{Formats date to BR standard (dd/mm/YYYY)}
+\title{Formats date to BR standard (DD/MM/YYYY)}
 \usage{
 format_date(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{a date in ISO format (YYY-MM-DD)}
 }
 \value{
 formatted date
 }
 \description{
-Formats date to BR standard (dd/mm/YYYY)
+Formats date to BR standard (DD/MM/YYYY)
 }
 \examples{
 format_date("2010-01-01")

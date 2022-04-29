@@ -7,7 +7,7 @@
 format_cash(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{a number}
 }
 \value{
 formatted string
