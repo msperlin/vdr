@@ -8,9 +8,9 @@
 #' @examples
 #'
 #' print(vdr_get_links_book())
-vdr_get_links_book <- function() {
+links_get <- function() {
 
-  my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/2020_book-afedr-en/',
+  my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/XXXX',
                book_site_zip = 'TODO',
                blog_site = 'https://www.msperlin.com/blog')
 

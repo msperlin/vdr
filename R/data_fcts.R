@@ -1,6 +1,7 @@
 #' List available datasets with description
 #'
-#' This function will list all available datasets from the book. It also includes a description and origin, if applicable.
+#' This function will list all available datasets from the book.
+#' It also includes a description and origin, if applicable.
 #'
 #' @param be_silent Be silent?
 #'
@@ -8,14 +9,25 @@
 #' @export
 #'
 #' @examples
-#' df_data <- vdr_list_available_data()
-vdr_list_available_data <- function(be_silent = FALSE) {
+#' data_list()
+data_list <- function(be_silent = FALSE) {
 
   path_data <- system.file('extdata/data', package = 'vdr')
 
   my_files <- list.files(path_data)
 
-  if (!be_silent) print(my_files)
+  if (!be_silent) {
+    cli::cli_h1("Available data files (name|path)")
+
+    for (i_file in my_files) {
+      cli::cli_alert_info("{i_file}\t| {data_path(i_file)}  ")
+    }
+
+    message('')
+    cli::cli_alert_success("\n\nYou can read files using vdr::data_import(name_of_file)")
+    cli::cli_alert_success("Example: df <- vdr::data_import('{sample(my_files, 1)}')")
+
+  }
 
   return(invisible(my_files))
 }
@@ -31,8 +43,9 @@ vdr_list_available_data <- function(be_silent = FALSE) {
 #' @export
 #'
 #' @examples
-#' path_to_file <- vdr_get_data_file('FTSE.csv')
-vdr_get_data_file <- function(name_dataset) {
+#' path_to_file <- data_path('FTSE.csv')
+#' path_to_file
+data_path <- function(name_dataset) {
 
   #if (!(name_dataset %in% df_available$file_name)) {
     #stop('Cant find name ', name_dataset, ' in list of available tables.')
@@ -47,4 +60,28 @@ vdr_get_data_file <- function(name_dataset) {
 
   return(path_out)
 }
+
+#' Import data from package vdr
+#'
+#' This is a helper function of book "Analyzing Financial and Economic Data with R" by Marcelo S. Perlin.
+#' With this function you'll be able to read the tables used in the book using only file names.
+#'
+#' @param name_dataset Name of the dataset filename (see \link{data_list} for more details)
+#'
+#' @return A path to the data file
+#' @export
+#'
+#' @examples
+#' df <- data_import('FTSE.csv')
+#' df
+data_import <- function(name_dataset) {
+
+  path_data <- data_path(name_dataset)
+
+  df_out <- readr::read_csv(path_data,
+                            col_types = readr::cols())
+
+  return(df_out)
+}
+
 
