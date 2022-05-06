@@ -14,24 +14,20 @@ LazyData: true
 RoxygenNote: 7.1.2
 Depends: R (>= 3.5.0)
 Imports: 
-  utils,
   readr,
-  purrr,
-  dplyr,
-  stats,
   crayon,
-  stringr,
-  tidyr,
   scales,
-  ggplot2,
   cli, 
-  fs,
-  readxl
+  fs
 Remotes:
-  msperlin/vdr,
   msperlin/yfR,
   clauswilke/dviz.supp,
   clauswilke/colorblindr
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    ggplot2,
+    stringr,
+    tibble,
+    tidyr,
+    dplyr
 Config/testthat/edition: 3

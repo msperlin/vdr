@@ -17,6 +17,7 @@ This is a helper function of book "Analyzing Financial and Economic Data with R"
 With this function you'll be able to read the tables used in the book using only file names.
 }
 \examples{
-df <- data_import('FTSE.csv')
+file_name <- data_list()[1]
+df <- data_import(file_name)
 df
 }

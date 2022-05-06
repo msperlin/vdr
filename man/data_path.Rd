@@ -7,7 +7,7 @@
 data_path(name_dataset)
 }
 \arguments{
-\item{name_dataset}{Name of the dataset filename (see \link{vdr_list_available_data} for more details)}
+\item{name_dataset}{Name of the dataset filename (see \link{data_list} for more details)}
 }
 \value{
 A path to the data file
@@ -17,6 +17,7 @@ This is a helper function of book "Analyzing Financial and Economic Data with R"
 With this function you'll be able to read the tables used in the book using only the filenames.
 }
 \examples{
-path_to_file <- data_path('FTSE.csv')
+file_name <- data_list()[1]
+path_to_file <- data_path(file_name)
 path_to_file
 }

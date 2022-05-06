@@ -7,7 +7,7 @@
 #'
 #' @examples
 #'
-#' print(vdr_get_links_book())
+#' print(links_get())
 links_get <- function() {
 
   my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/XXXX',
@@ -29,10 +29,8 @@ links_get <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' flag <- vdr_get_book_files()
-#' }
-vdr_get_book_files <- function(path_to_copy = '~/vdr-files') {
+#' bookfiles_get()
+bookfiles_get <- function(path_to_copy = '~/vdr-files') {
 
   if (!dir.exists(path_to_copy)) {
 

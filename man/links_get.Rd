@@ -14,5 +14,5 @@ Use this function in the book so that all links are updated in a single location
 }
 \examples{
 
-print(vdr_get_links_book())
+print(links_get())
 }

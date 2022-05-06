@@ -37,13 +37,14 @@ data_list <- function(be_silent = FALSE) {
 #' This is a helper function of book "Analyzing Financial and Economic Data with R" by Marcelo S. Perlin.
 #' With this function you'll be able to read the tables used in the book using only the filenames.
 #'
-#' @param name_dataset Name of the dataset filename (see \link{vdr_list_available_data} for more details)
+#' @param name_dataset Name of the dataset filename (see \link{data_list} for more details)
 #'
 #' @return A path to the data file
 #' @export
 #'
 #' @examples
-#' path_to_file <- data_path('FTSE.csv')
+#' file_name <- data_list()[1]
+#' path_to_file <- data_path(file_name)
 #' path_to_file
 data_path <- function(name_dataset) {
 
@@ -72,7 +73,8 @@ data_path <- function(name_dataset) {
 #' @export
 #'
 #' @examples
-#' df <- data_import('FTSE.csv')
+#' file_name <- data_list()[1]
+#' df <- data_import(file_name)
 #' df
 data_import <- function(name_dataset) {
 
