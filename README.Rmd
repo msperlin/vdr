@@ -1,0 +1,43 @@
+---
+output: github_document
+---
+
+# Repository for R package vdr
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/msperlin/vdr/workflows/R-CMD-check/badge.svg)](https://github.com/msperlin/vdr/actions)
+<!-- badges: end -->
+
+Includes several functions related to book "Visualização de Dados com o R", to be published, hopefully, in mid 2021. 
+
+## Installation
+
+```{r, eval=FALSE}
+# install from github (up to date version)
+if (!require(devtools)) install.packages(devtools)
+devtools::install_github('msperlin/vdr')
+```
+
+## Example of usage
+
+### Listing available datasets
+
+```{r}
+vdr::data_list()
+```
+
+### Fetching data from book repository
+
+```{r}
+df <- vdr::data_import('Chapter02-PETR3-and-BVSP-2015-2022.csv')
+
+dplyr::glimpse(df)
+```
+
+### Copying all book files to local directory
+
+```{r}
+flag <- vdr::bookfiles_get()
+```
+
+

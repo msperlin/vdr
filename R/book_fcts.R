@@ -38,6 +38,8 @@ bookfiles_get <- function(path_to_copy = '~/vdr-files') {
     fs::dir_create(path_to_copy, recurse = TRUE)
   }
 
+  path_to_copy <- fs::path_expand(path_to_copy)
+
   # data files
   data_path_files <- system.file('extdata/data', package = 'vdr')
   data_path_to_copy <- file.path(path_to_copy, 'vdr-files/data')
