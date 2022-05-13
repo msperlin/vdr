@@ -99,12 +99,11 @@ bookfiles_get <- function(path_to_copy = '~/vdr-files') {
 book_strings_get <- function() {
 
   l_out <- list(
-    book_title = "Visualização de Dados com o R",
-    book_subtitle = "Aplicações em Finanças e Economia",
+    book_title = "Visualiza\\u00e7\\u00e3o de Dados com o R",
+    book_subtitle = "Aplica\\u00e7\\u00f5es em Finan\\u00e7as e Economia",
     publication_years = c(2022),
     author_name = "Marcelo S. Perlin",
-    author_email = "marcelo@msperlin.com",
-
+    author_email = "marcelo@msperlin.com"
   )
 
   return(l_out)
