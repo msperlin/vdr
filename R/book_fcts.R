@@ -101,7 +101,10 @@ book_strings_get <- function() {
   l_out <- list(
     book_title = "Visualização de Dados com o R",
     book_subtitle = "Aplicações em Finanças e Economia",
-    publication_years = c(2022)
+    publication_years = c(2022),
+    author_name = "Marcelo S. Perlin",
+    author_email = "marcelo@msperlin.com",
+
   )
 
   return(l_out)
