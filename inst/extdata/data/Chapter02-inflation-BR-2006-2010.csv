@@ -1,4 +1,4 @@
-ref.date,value,id.num,series.name
+ref_date,value,id_num,series_name
 2006-01-01,0.0059,433,id = 433
 2006-02-01,0.0040999999999999995,433,id = 433
 2006-03-01,0.0043,433,id = 433
