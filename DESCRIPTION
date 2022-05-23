@@ -18,7 +18,8 @@ Imports:
   crayon,
   scales,
   cli, 
-  fs
+  fs,
+  knitr
 Remotes:
   msperlin/yfR,
   clauswilke/dviz.supp,

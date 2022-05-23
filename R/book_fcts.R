@@ -127,3 +127,32 @@ book_strings_get <- function() {
 
   return(l_out)
 }
+
+
+#' Use color in book text
+#'
+#' From: https://bookdown.org/yihui/rmarkdown-cookbook/font-color.html
+#'
+#' @param x A text to be colorized
+#' @param color the color (e.g. "red")
+#'
+#' @return a colorized version of string (html or latex)
+#' @export
+#'
+#' @examples
+#' colorize("ABC", "red")
+colorize <- function(x, color) {
+
+  if (knitr::is_latex_output()) {
+
+    sprintf("\\textcolor{%s}{%s}", color, x)
+
+  } else if (knitr::is_html_output()) {
+
+    sprintf("<span style='color: %s;'>%s</span>", color,
+            x)
+
+  } else {
+    x
+  }
+}

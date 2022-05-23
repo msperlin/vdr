@@ -2,6 +2,7 @@
 
 export(book_strings_get)
 export(bookfiles_get)
+export(colorize)
 export(data_import)
 export(data_list)
 export(data_path)
