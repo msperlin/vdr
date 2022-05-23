@@ -1,3 +1,23 @@
+#' Gets official links from book
+#'
+#' Use this function in the book so that all links are updated in a single location.
+#'
+#' @return A list with links
+#' @export
+#'
+#' @examples
+#'
+#' print(links_get())
+links_get <- function() {
+
+  my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/XXXX',
+               book_site_zip = 'TODO',
+               blog_site = 'https://www.msperlin.com/blog')
+
+  return(my_l)
+
+}
+
 #' Copy all book files to local folder
 #'
 #' This function will grab files from the afedR package and copy all of it to a local folder,
@@ -17,8 +37,6 @@ bookfiles_get <- function(path_to_copy = '~/vdr-files') {
     cli::cli_alert_info('Path {path_to_copy} does not exists and is created.')
     fs::dir_create(path_to_copy, recurse = TRUE)
   }
-
-  path_to_copy <- fs::path_expand(path_to_copy)
 
   # data files
   data_path_files <- system.file('extdata/data', package = 'vdr')
