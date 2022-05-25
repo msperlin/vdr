@@ -17,6 +17,9 @@ test_that("format functions", {
 
   # format_date
   this_date <- vdr::format_date(Sys.Date())
-
   expect_true(is.character(this_date))
+
+  # format citation
+  this_cit <- format_pkg_citation("dplyr")
+  expect_true(is.character(this_cit))
 })

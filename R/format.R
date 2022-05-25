@@ -54,3 +54,20 @@ format_date <- function(x) {
 
   return(x_fmt)
 }
+
+#' Produces package citation string
+#'
+#' @param pkg a pkg availabe locally or github
+#'
+#' @return a string in rmarkdown
+#' @export
+#'
+#' @examples
+#' format_pkg_citation("dplyr")
+format_pkg_citation <- function(pkg) {
+
+  pkg_citation <- stringr::str_glue("`{pkg}` [@R-{pkg}]")
+
+  return(pkg_citation)
+
+}
