@@ -57,6 +57,9 @@ format_date <- function(x) {
 
 #' Produces package citation string
 #'
+#' Formats package as `pkg` and, when called the first time, adds reference as
+#' [@R-pkg]
+#'
 #' @param pkg a pkg availabe locally or github
 #'
 #' @return a string in rmarkdown
@@ -66,7 +69,21 @@ format_date <- function(x) {
 #' format_pkg_citation("dplyr")
 format_pkg_citation <- function(pkg) {
 
-  pkg_citation <- stringr::str_glue("`{pkg}` [@R-{pkg}]")
+  folder_db_citation <- fs::path_temp("bookdown-pkg-citations")
+
+  if (!fs::dir_exists(folder_db_citation)) fs::dir_create(folder_db_citation)
+  available_cit <- basename(fs::dir_ls(folder_db_citation))
+
+  if (pkg %in% available_cit) {
+    pkg_citation <- stringr::str_glue("`{pkg}`")
+  } else {
+
+    this_cit_file <- fs::path(folder_db_citation, pkg)
+    fs::file_touch(this_cit_file)
+
+    pkg_citation <- stringr::str_glue("`{pkg}` [@R-{pkg}]")
+  }
+
 
   return(pkg_citation)
 
