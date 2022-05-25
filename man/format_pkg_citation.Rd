@@ -4,10 +4,13 @@
 \alias{format_pkg_citation}
 \title{Produces package citation string}
 \usage{
-format_pkg_citation(pkg)
+format_pkg_citation(pkg, force_ref = FALSE)
 }
 \arguments{
 \item{pkg}{a pkg availabe locally or github}
+
+\item{force_ref}{Logical (TRUE or FALSE) - defines whether to force formal
+reference (e.g. [@R-pkg])}
 }
 \value{
 a string in rmarkdown

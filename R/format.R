@@ -61,7 +61,8 @@ format_date <- function(x) {
 #' [@R-pkg]
 #'
 #' @param pkg a pkg availabe locally or github
-#'
+#' @param force_ref Logical (TRUE or FALSE) - defines whether to force formal
+#' reference (e.g. [@R-pkg])
 #' @return a string in rmarkdown
 #' @export
 #'
