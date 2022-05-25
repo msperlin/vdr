@@ -13,7 +13,8 @@ format_pkg_citation(pkg)
 a string in rmarkdown
 }
 \description{
-Produces package citation string
+Formats package as `pkg` and, when called the first time, adds reference as
+[@R-pkg]
 }
 \examples{
 format_pkg_citation("dplyr")

@@ -67,15 +67,17 @@ format_date <- function(x) {
 #'
 #' @examples
 #' format_pkg_citation("dplyr")
-format_pkg_citation <- function(pkg) {
+format_pkg_citation <- function(pkg, force_ref = FALSE) {
 
   folder_db_citation <- fs::path_temp("bookdown-pkg-citations")
 
   if (!fs::dir_exists(folder_db_citation)) fs::dir_create(folder_db_citation)
   available_cit <- basename(fs::dir_ls(folder_db_citation))
 
-  if (pkg %in% available_cit) {
+  if ((pkg %in% available_cit) & (!force_ref)) {
+
     pkg_citation <- stringr::str_glue("`{pkg}`")
+
   } else {
 
     this_cit_file <- fs::path(folder_db_citation, pkg)
@@ -83,7 +85,6 @@ format_pkg_citation <- function(pkg) {
 
     pkg_citation <- stringr::str_glue("`{pkg}` [@R-{pkg}]")
   }
-
 
   return(pkg_citation)
 
