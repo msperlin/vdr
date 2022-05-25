@@ -75,7 +75,7 @@ format_pkg_citation <- function(pkg, force_ref = FALSE) {
   if (!fs::dir_exists(folder_db_citation)) fs::dir_create(folder_db_citation)
   available_cit <- basename(fs::dir_ls(folder_db_citation))
 
-  str_index <- paste0("\\index{", pkg, "}")
+  str_index <- paste0("\\\\index{", pkg, "}")
   if ((pkg %in% available_cit) & (!force_ref)) {
 
     pkg_citation <- stringr::str_glue("`{pkg} {str_index}`")
