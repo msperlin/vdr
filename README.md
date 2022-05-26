@@ -7,7 +7,7 @@
 <!-- badges: end -->
 
 Includes several functions related to book “Visualização de Dados com o
-R”, to be published, hopefully, in mid 2021.
+R”, to be published, hopefully, in early 2023.
 
 ## Installation
 
@@ -29,19 +29,25 @@ vdr::data_list()
 
     ## ── Available data files (name|path) ────────────────────────────────────────────
 
-    ## ℹ Chapter02-inflation-BR-2006-2010.csv   | /tmp/Rtmpq5h0oP/temp_libpath7c7b3cd6c543/vdr/extdata/data/Chapter02-inflation-BR-2006-2010.csv
+    ## ℹ Chapter02-EGIE3-2016-2022.csv  | /tmp/RtmpgpeS4D/temp_libpathfc6e43f1808c/vdr/extdata/data/Chapter02-EGIE3-2016-2022.csv
 
-    ## ℹ Chapter02-inflation-BR-2018-2022.csv   | /tmp/Rtmpq5h0oP/temp_libpath7c7b3cd6c543/vdr/extdata/data/Chapter02-inflation-BR-2018-2022.csv
+    ## ℹ Chapter02-inflation-BR-2000-2005.csv   | /tmp/RtmpgpeS4D/temp_libpathfc6e43f1808c/vdr/extdata/data/Chapter02-inflation-BR-2000-2005.csv
 
-    ## ℹ Chapter02-PETR3-and-BVSP-2015-2022.csv | /tmp/Rtmpq5h0oP/temp_libpath7c7b3cd6c543/vdr/extdata/data/Chapter02-PETR3-and-BVSP-2015-2022.csv
+    ## ℹ Chapter02-inflation-BR-2006-2010.csv   | /tmp/RtmpgpeS4D/temp_libpathfc6e43f1808c/vdr/extdata/data/Chapter02-inflation-BR-2006-2010.csv
 
-    ## ℹ Chapter02-Petrobras-monthly-stock-prices-2015-2022.csv | /tmp/Rtmpq5h0oP/temp_libpath7c7b3cd6c543/vdr/extdata/data/Chapter02-Petrobras-monthly-stock-prices-2015-2022.csv
+    ## ℹ Chapter02-inflation-BR-2018-2022.csv   | /tmp/RtmpgpeS4D/temp_libpathfc6e43f1808c/vdr/extdata/data/Chapter02-inflation-BR-2018-2022.csv
+
+    ## ℹ Chapter02-PETR3-and-BVSP-2015-2022.csv | /tmp/RtmpgpeS4D/temp_libpathfc6e43f1808c/vdr/extdata/data/Chapter02-PETR3-and-BVSP-2015-2022.csv
+
+    ## ℹ Chapter02-Petrobras-monthly-stock-prices-2015-2022.csv | /tmp/RtmpgpeS4D/temp_libpathfc6e43f1808c/vdr/extdata/data/Chapter02-Petrobras-monthly-stock-prices-2015-2022.csv
+
+    ## ℹ Chapter02-SavingsRatios-World-1960-1970.csv    | /tmp/RtmpgpeS4D/temp_libpathfc6e43f1808c/vdr/extdata/data/Chapter02-SavingsRatios-World-1960-1970.csv
 
     ## 
 
     ## ✔ You can read files using vdr::data_import(name_of_file)
 
-    ## ✔ Example: df <- vdr::data_import('Chapter02-inflation-BR-2018-2022.csv')
+    ## ✔ Example: df <- vdr::data_import('Chapter02-Petrobras-monthly-stock-prices-2015-2022.csv')
 
 ### Fetching data from book repository
 
@@ -71,18 +77,18 @@ dplyr::glimpse(df)
 flag <- vdr::bookfiles_get()
 ```
 
-    ## Copying data files files to /home/msperlin/vdr-files/vdr-files/data
+    ## Copying data files files to ~/vdr-files/vdr-files/data
 
-    ##  4 files copied
+    ##  7 files copied
 
-    ## Copying slides files files to /home/msperlin/vdr-files/vdr-files/slides
-
-    ##  0 files copied
-
-    ## Copying end-of-chapter (eoc) exercises with solutions to /home/msperlin/vdr-files/vdr-files/eoc-exercises
+    ## Copying slides files files to ~/vdr-files/vdr-files/slides
 
     ##  0 files copied
 
-    ## Copying end-of-chapter (eoc) exercises with solutions to /home/msperlin/vdr-files/vdr-files/R-code
+    ## Copying end-of-chapter (eoc) exercises with solutions to ~/vdr-files/vdr-files/eoc-exercises
+
+    ##  0 files copied
+
+    ## Copying end-of-chapter (eoc) exercises with solutions to ~/vdr-files/vdr-files/R-code
 
     ##  0 files copied
