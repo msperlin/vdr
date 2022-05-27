@@ -91,3 +91,36 @@ format_pkg_citation <- function(pkg, force_ref = FALSE) {
   return(pkg_citation)
 
 }
+
+#' Produces index string for pkg::function
+#'
+#' Formats package as `pkg` and, when called the first time, adds reference as
+#' [@R-pkg]
+#'
+#' @param pkg a pkg availabe locally or github
+#' @param function name of function
+#' @param force_ref Logical (TRUE or FALSE) - defines whether to force formal
+#' reference (e.g. [@R-pkg])
+#' @return a string in rmarkdown
+#' @export
+#'
+#' @examples
+#' format_fct_ref("dplyr", "group_by")
+format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
+
+  fixed_this_fct <- stringr::str_replace_all(this_fct, stringr::fixed("_"), "\\_")
+  str_index <- paste0("\\index{", pkg, "!", fixed_this_fct, "}")
+
+  if (force_index) {
+
+    fct_citation <- stringr::str_glue("**`{pkg}::{this_fct}()`** {str_index}")
+
+  } else {
+
+    fct_citation <- stringr::str_glue("**`{pkg}::{this_fct}()`**")
+
+  }
+
+  return(fct_citation)
+
+}
