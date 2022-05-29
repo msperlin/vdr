@@ -98,8 +98,8 @@ format_pkg_citation <- function(pkg, force_ref = FALSE) {
 #' [@R-pkg]
 #'
 #' @param pkg a pkg availabe locally or github
-#' @param function name of function
-#' @param force_ref Logical (TRUE or FALSE) - defines whether to force formal
+#' @param this_fct name of function
+#' @param force_index Logical (TRUE or FALSE) - defines whether to force formal
 #' reference (e.g. [@R-pkg])
 #' @return a string in rmarkdown
 #' @export
