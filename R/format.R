@@ -70,6 +70,14 @@ format_date <- function(x) {
 #' format_pkg_citation("dplyr")
 format_pkg_citation <- function(pkg, force_ref = FALSE) {
 
+  installed_pkgs <- utils::installed.packages()[, 1]
+
+  # check if package is installed
+  if (!pkg %in% installed_pkgs) {
+    cli::cli_alert_info("{pkg} not found, installing it..")
+    utils::install.packages(pkg)
+  }
+
   folder_db_citation <- fs::path_temp("bookdown-pkg-citations")
 
   if (!fs::dir_exists(folder_db_citation)) fs::dir_create(folder_db_citation)
@@ -98,15 +106,30 @@ format_pkg_citation <- function(pkg, force_ref = FALSE) {
 #' [@R-pkg]
 #'
 #' @param pkg a pkg availabe locally or github
-#' @param function name of function
-#' @param force_ref Logical (TRUE or FALSE) - defines whether to force formal
+#' @param this_fct name of function
+#' @param force_index Logical (TRUE or FALSE) - defines whether to force formal
 #' reference (e.g. [@R-pkg])
+#'
 #' @return a string in rmarkdown
 #' @export
 #'
 #' @examples
 #' format_fct_ref("dplyr", "group_by")
 format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
+
+  installed_pkgs <- utils::installed.packages()[, 1]
+
+  # check if package is installed
+  if (!pkg %in% installed_pkgs) {
+    cli::cli_alert_info("{pkg} not found, installing it..")
+    utils::install.packages(pkg)
+  }
+
+  # check if function exists
+  this_str <- stringr::str_glue("{pkg}::{this_fct}")
+  if (!purrr::is_function(eval(parse(text = this_str)))) {
+    stop(stringr::str_glue("Cant find function {this_str}"))
+  }
 
   fixed_this_fct <- stringr::str_replace_all(this_fct, stringr::fixed("_"), "\\_")
   str_index <- paste0("\\index{", pkg, "!", fixed_this_fct, "}")

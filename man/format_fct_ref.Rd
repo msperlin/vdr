@@ -9,9 +9,9 @@ format_fct_ref(pkg, this_fct, force_index = TRUE)
 \arguments{
 \item{pkg}{a pkg availabe locally or github}
 
-\item{function}{name of function}
+\item{this_fct}{name of function}
 
-\item{force_ref}{Logical (TRUE or FALSE) - defines whether to force formal
+\item{force_index}{Logical (TRUE or FALSE) - defines whether to force formal
 reference (e.g. [@R-pkg])}
 }
 \value{
