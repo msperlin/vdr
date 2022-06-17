@@ -4,13 +4,16 @@
 \alias{format_pkg_citation}
 \title{Produces package citation string}
 \usage{
-format_pkg_citation(pkg, force_ref = FALSE)
+format_pkg_citation(pkg, force_ref = FALSE, make_index = TRUE)
 }
 \arguments{
 \item{pkg}{a pkg availabe locally or github}
 
 \item{force_ref}{Logical (TRUE or FALSE) - defines whether to force formal
 reference (e.g. [@R-pkg])}
+
+\item{make_index}{Logical (TRUE or FALSE) - defines wheter to write index for
+remissive index of book}
 }
 \value{
 a string in rmarkdown

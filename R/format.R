@@ -63,12 +63,15 @@ format_date <- function(x) {
 #' @param pkg a pkg availabe locally or github
 #' @param force_ref Logical (TRUE or FALSE) - defines whether to force formal
 #' reference (e.g. [@R-pkg])
+#' @param make_index Logical (TRUE or FALSE) - defines wheter to write index for
+#'  remissive index of book
+#'
 #' @return a string in rmarkdown
 #' @export
 #'
 #' @examples
 #' format_pkg_citation("dplyr")
-format_pkg_citation <- function(pkg, force_ref = FALSE) {
+format_pkg_citation <- function(pkg, force_ref = FALSE, make_index = TRUE) {
 
   installed_pkgs <- utils::installed.packages()[, 1]
 
@@ -83,7 +86,12 @@ format_pkg_citation <- function(pkg, force_ref = FALSE) {
   if (!fs::dir_exists(folder_db_citation)) fs::dir_create(folder_db_citation)
   available_cit <- basename(fs::dir_ls(folder_db_citation))
 
-  str_index <- paste0("\\index{", pkg, "}")
+  if (make_index) {
+    str_index <- paste0("\\index{", pkg, "}")
+  } else {
+    str_index <- ""
+  }
+
   if ((pkg %in% available_cit) & (!force_ref)) {
 
     pkg_citation <- stringr::str_glue("**`{pkg}`** {str_index}")
