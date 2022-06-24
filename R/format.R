@@ -92,7 +92,7 @@ format_pkg_citation <- function(pkg, force_ref = FALSE, make_index = TRUE) {
     str_index <- ""
   }
 
-  if ((pkg %in% available_cit) & (!force_ref)) {
+  if ((pkg %in% available_cit) && (!force_ref)) {
 
     pkg_citation <- stringr::str_glue("**`{pkg}`** {str_index}")
 
@@ -153,5 +153,29 @@ format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
   }
 
   return(fct_citation)
+
+}
+
+#' Formats a vector of string into readable text
+#'
+#' @param str_in vector of strings
+#'
+#' @return a single character object
+#' @export
+#'
+#' @examples
+#' format_vec_as_text(c("A", "B", "C"))
+format_vec_as_text <- function(str_in) {
+
+  if (length(str_in) < 2) {
+    stop("need vector with at least 2 elements")
+  }
+
+  len <- length(str_in)
+  str_out <- paste0(
+    paste0(str_in[1:(len-1)], collapse = ", "),
+    " e ",
+    str_in[len]
+  )
 
 }

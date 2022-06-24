@@ -22,4 +22,8 @@ test_that("format functions", {
   # format citation
   this_cit <- format_pkg_citation("dplyr")
   expect_true(is.character(this_cit))
+
+  # format vect-to-string
+  str_out <- format_vec_as_text(c("A", "B", "C"))
+  expect_true(is.character(str_out))
 })
