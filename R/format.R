@@ -40,7 +40,7 @@ format_percent <- function(x) {
 
 #' Formats date to BR standard (DD/MM/YYYY)
 #'
-#' @param x a date in ISO format (YYY-MM-DD)
+#' @param x a date in ISO format (YYYY-MM-DD)
 #'
 #' @return formatted date
 #' @export
@@ -54,6 +54,29 @@ format_date <- function(x) {
 
   return(x_fmt)
 }
+
+
+#' Formats a number (used in plots)
+#'
+#' @param x a number
+#' @param digits number of digits to use
+#' @return formatted number (character)
+#' @export
+#'
+#' @examples
+#' format_number(1/3)
+format_number <- function(x, digits = 4) {
+
+  x <- format(x,
+              digits = digits,
+              nsmall = 2,
+              decimal.mark = ",",
+              big.mark = "."
+              )
+
+  return(x)
+}
+
 
 #' Produces package citation string
 #'

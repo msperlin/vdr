@@ -36,7 +36,7 @@ write_csv(df_sp500, fs::path(data_dir, f_out ))
 
 ##  SELIC
 first_date <- '2000-01-01'
-last_date <- '2021-12-31'
+last_date <- Sys.Date()
 diff_years <- 3
 
 df_selic <- GetBCBData::gbcbd_get_series(1178, first_date, last_date) |>
@@ -93,3 +93,37 @@ f_out <- stringr::str_glue(
 
 write_csv(df_num, fs::path(data_dir, f_out ))
 
+# many stocks
+set.seed(100)
+df_ibov <- yfR::yf_index_composition("IBOV")
+
+first_date <- '2010-01-01'
+last_date <- Sys.Date()
+
+my_tickers <- paste0(
+  sample(df_ibov$ticker, 10), ".SA"
+  )
+
+df_yf <- yfR::yf_get(
+  my_tickers,
+  first_date = first_date,
+  last_date = last_date,
+  thresh_bad_data = 0.15,
+  freq_data = "yearly"
+)
+
+df_perf <- df_yf |>
+  group_by(ticker) |>
+  summarise(min_date = min(ref_date),
+            max_date = max(ref_date),
+            n_years = lubridate::interval(min_date, max_date) / lubridate::years(1),
+            total_ret = last(price_adjusted)/first(price_adjusted) - 1,
+            ret_aa = (1+total_ret)^(1/n_years) -1)
+
+df_perf
+
+f_out <- stringr::str_glue(
+  'Chapter04-many-stocks-yearly-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
+)
+
+readr::write_csv(df_yf, fs::path(data_dir, f_out ))

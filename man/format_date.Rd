@@ -7,7 +7,7 @@
 format_date(x)
 }
 \arguments{
-\item{x}{a date in ISO format (YYY-MM-DD)}
+\item{x}{a date in ISO format (YYYY-MM-DD)}
 }
 \value{
 formatted date
