@@ -46,7 +46,7 @@ df_selic <- GetBCBData::gbcbd_get_series(1178, first_date, last_date) |>
   rename(ref_date = ref.date,
          selic = value) |>
   mutate(ref_year = lubridate::floor_date(ref_date,
-                                      lubridate::years(diff_years))) |>
+                                          lubridate::years(diff_years))) |>
   filter(ref_year >= first_date)
 
 df_labels <- tibble(
@@ -93,24 +93,60 @@ f_out <- stringr::str_glue(
 
 write_csv(df_num, fs::path(data_dir, f_out ))
 
-# many stocks
+# Stocks and inflation
+require(tidyverse)
+
 set.seed(100)
 df_ibov <- yfR::yf_index_composition("IBOV")
 
-first_date <- '2010-01-01'
+# select top and bottom by performance
+first_date <- '2005-01-01'
 last_date <- Sys.Date()
 
-my_tickers <- paste0(
-  sample(df_ibov$ticker, 10), ".SA"
-  )
+df_ibov <- yfR::yf_collection_get('IBOV', first_date, last_date,
+                                  thresh_bad_data = 0.15, )
+
+tab <- df_ibov |>
+  group_by(ticker) |>
+  summarise(min_date = min(ref_date),
+            max_date = max(ref_date),
+            n_years = lubridate::interval(min_date, max_date) / lubridate::years(1),
+            total_ret = last(price_adjusted)/first(price_adjusted) - 1,
+            ret_aa = (1+total_ret)^(1/n_years) -1) |>
+  ungroup() |>
+  arrange(ret_aa)
+
+how_many <- 14
+
+filtered <- bind_rows(tab |> slice_head(n = how_many/2),
+                      tab |> slice_tail(n = how_many/2)
+)
+
+tickers <- filtered$ticker
+
+df_inflation <- GetBCBData::gbcbd_get_series(
+  433,
+  first.date = first_date,
+  last.date = last_date,
+  cache.path = fs::path_temp('bcb')
+)  |>
+  janitor::clean_names() |>
+  mutate(value = value/100,
+         year = lubridate::year(ref_date)) |>
+  group_by(year) |>
+  summarise(inflation = last(cumprod(1 + value)) - 1)
 
 df_yf <- yfR::yf_get(
-  my_tickers,
+  tickers,
   first_date = first_date,
   last_date = last_date,
   thresh_bad_data = 0.15,
   freq_data = "yearly"
-)
+) |>
+  mutate(year = lubridate::year(ref_date)) |>
+  left_join(df_inflation,
+            by = "year")
+
 
 df_perf <- df_yf |>
   group_by(ticker) |>
@@ -118,12 +154,58 @@ df_perf <- df_yf |>
             max_date = max(ref_date),
             n_years = lubridate::interval(min_date, max_date) / lubridate::years(1),
             total_ret = last(price_adjusted)/first(price_adjusted) - 1,
-            ret_aa = (1+total_ret)^(1/n_years) -1)
+            total_inflation = last(cumprod(1+inflation)) - 1,
+            ret_aa = (1+total_ret)^(1/n_years) -1,
+            text = str_glue(
+              "{vdr::format_percent(ret_aa)} a.a. ",
+              " [{lubridate::year(min_date)}-{lubridate::year(max_date)}]" ),
+            text_color = if_else(total_ret >= total_inflation, "Acima IPCA", "Abaixo IPCA")) |>
+  ungroup()
 
 df_perf
 
+
 f_out <- stringr::str_glue(
-  'Chapter04-many-stocks-yearly-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
+  'Chapter04-performance-{how_many}-stocks-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
 )
 
-readr::write_csv(df_yf, fs::path(data_dir, f_out ))
+readr::write_csv(df_perf, fs::path(data_dir, f_out ))
+
+p <- ggplot(df_perf) +
+  geom_col(aes(x = ret_aa,
+               y = reorder(ticker, ret_aa),
+               fill = text_color),
+           alpha = 0.35) +
+  geom_text(aes(x = 0,
+                y = ticker,
+                label = text),
+            nudge_x = 0.0) +
+  labs(
+    title = str_glue("Desempenho de {nrow(df_perf)} ações [",
+                     "{min(lubridate::year(df_perf$min_date))} e ",
+                     "{max(lubridate::year(df_perf$max_date))}]"),
+    subtitle = str_glue(
+      "Inflação anual média (IPCA) igual a ",
+      "{vdr::format_percent(mean(df_inflation$inflation))} "
+    ),
+    x = "Retorno Anual",
+    y = "Empresa/Ação",
+    fill = "Bate Inflação?",
+    caption = "Dados do Yahoo Finance") +
+  theme_light() +
+  scale_x_continuous(label = vdr::format_percent)
+
+
+p
+
+
+#  inflation (ALL)
+first_date <- '2000-01-01'
+last_date <- Sys.Date()
+
+
+f_out <- stringr::str_glue(
+  'Chapter04-inflation-anual-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
+)
+
+write_csv(df_inflation_year, fs::path(data_dir, f_out ))
