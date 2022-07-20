@@ -42,7 +42,7 @@ bookfiles_get <- function(path_to_copy = '~/vdr-files') {
   data_path_files <- system.file('extdata/data', package = 'vdr')
   data_path_to_copy <- file.path(path_to_copy, 'vdr-files/data')
 
-  message('Copying data files files to ', data_path_to_copy)
+  cli::cli_alert_info('Copying data files files to {fs::path_expand(data_path_to_copy)}')
 
   if (!dir.exists(data_path_to_copy)) dir.create(data_path_to_copy,
                                                  recursive = TRUE)
@@ -52,57 +52,13 @@ bookfiles_get <- function(path_to_copy = '~/vdr-files') {
   flag <- file.copy(from = files_to_copy, to = data_path_to_copy,
                     overwrite = TRUE)
 
-  if (all(flag)) message(paste0('\t', length(flag), ' files copied'))
+  if (all(flag)) cli::cli_alert_success('\t{length(flag)} files copied')
 
-  # Slides
-  slides_path_files <- system.file('extdata/slides', package = 'vdr')
-  slides_path_to_copy <- file.path(path_to_copy, 'vdr-files/slides')
+  my_link <- cli::style_hyperlink(fs::path_expand(path_to_copy),
+                                  paste0("file://",
+                                         fs::path_expand(path_to_copy)))
 
-  message('Copying slides files files to ', slides_path_to_copy)
-  if (!dir.exists(slides_path_to_copy)) dir.create(slides_path_to_copy,
-                                                   recursive = TRUE)
-
-  files_to_copy <- list.files(slides_path_files, full.names = TRUE,
-                              include.dirs = TRUE)
-
-  flag <- file.copy(from = files_to_copy, to = slides_path_to_copy,
-                    overwrite = TRUE, recursive = TRUE)
-
-  if (all(flag)) message(paste0('\t', length(flag), ' files copied'))
-
-  # EOC exercises
-  eoc_exerc_path_files <- system.file('extdata/eoc-exercises', package = 'vdr')
-  eoc_exerc_path_to_copy <- file.path(path_to_copy, 'vdr-files/eoc-exercises')
-
-  message('Copying end-of-chapter (eoc) exercises with solutions to ',
-          eoc_exerc_path_to_copy)
-  if (!dir.exists(eoc_exerc_path_to_copy)) dir.create(eoc_exerc_path_to_copy,
-                                                      recursive = TRUE)
-
-  files_to_copy <- list.files(eoc_exerc_path_files, full.names = TRUE)
-
-  flag <- file.copy(from = files_to_copy,
-                    to = eoc_exerc_path_to_copy,
-                    overwrite = TRUE)
-
-  if (all(flag)) message(paste0('\t', length(flag), ' files copied'))
-
-  # R code
-  r_code_path_files <- system.file('extdata/R-code', package = 'vdr')
-  r_code_exerc_path_to_copy <- file.path(path_to_copy, 'vdr-files/R-code')
-
-  message('Copying end-of-chapter (eoc) exercises with solutions to ',
-          r_code_exerc_path_to_copy)
-  if (!dir.exists(r_code_exerc_path_to_copy)) dir.create(r_code_exerc_path_to_copy,
-                                                         recursive = TRUE)
-
-  files_to_copy <- list.files(r_code_path_files, full.names = TRUE)
-
-  flag <- file.copy(from = files_to_copy,
-                    to = r_code_exerc_path_to_copy,
-                    overwrite = TRUE)
-
-  if (all(flag)) message(paste0('\t', length(flag), ' files copied'))
+  cli::cli_alert_info("Files available at {my_link}")
 
   return(invisible(TRUE))
 }
