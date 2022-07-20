@@ -40,7 +40,7 @@ bookfiles_get <- function(path_to_copy = '~/vdr-files') {
 
   # data files
   data_path_files <- system.file('extdata/data', package = 'vdr')
-  data_path_to_copy <- file.path(path_to_copy, 'vdr-files/data')
+  data_path_to_copy <- file.path(path_to_copy, 'data')
 
   cli::cli_alert_info('Copying data files files to {fs::path_expand(data_path_to_copy)}')
 
@@ -58,6 +58,25 @@ bookfiles_get <- function(path_to_copy = '~/vdr-files') {
                                   paste0("file://",
                                          fs::path_expand(path_to_copy)))
 
+  # scripts
+  data_path_files <- system.file('extdata/book-scripts', package = 'vdr')
+  data_path_to_copy <- file.path(path_to_copy, 'book-scripts')
+
+  cli::cli_alert_info('Copying book script files to {fs::path_expand(data_path_to_copy)}')
+
+  if (!dir.exists(data_path_to_copy)) dir.create(data_path_to_copy,
+                                                 recursive = TRUE)
+
+  files_to_copy <- list.files(data_path_files, full.names = TRUE)
+
+  flag <- file.copy(from = files_to_copy, to = data_path_to_copy,
+                    overwrite = TRUE)
+
+  if (all(flag)) cli::cli_alert_success('\t{length(flag)} files copied')
+
+  my_link <- cli::style_hyperlink(fs::path_expand(path_to_copy),
+                                  paste0("file://",
+                                         fs::path_expand(path_to_copy)))
   cli::cli_alert_info("Files available at {my_link}")
 
   return(invisible(TRUE))
