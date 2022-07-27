@@ -4,10 +4,17 @@
 \alias{format_pkg_citation}
 \title{Produces package citation string}
 \usage{
-format_pkg_citation(pkg, force_ref = FALSE, make_index = TRUE)
+format_pkg_citation(
+  pkg,
+  github_address = NULL,
+  force_ref = FALSE,
+  make_index = TRUE
+)
 }
 \arguments{
 \item{pkg}{a pkg availabe locally or github}
+
+\item{github_address}{github address of package code (eg. "msperlin/vdr")}
 
 \item{force_ref}{Logical (TRUE or FALSE) - defines whether to force formal
 reference (e.g. [@R-pkg])}

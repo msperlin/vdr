@@ -12,7 +12,7 @@ BugReports: https://github.com/msperlin/vdr/issues
 URL: https://github.com/msperlin/vdr/
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Depends: R (>= 4.0.0)
 Imports: 
   readr,
@@ -20,7 +20,8 @@ Imports:
   scales,
   cli, 
   fs,
-  knitr
+  knitr,
+  remotes
 Remotes:
   msperlin/yfR,
   clauswilke/dviz.supp,

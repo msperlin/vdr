@@ -84,6 +84,7 @@ format_number <- function(x, digits = 4) {
 #' [@R-pkg]
 #'
 #' @param pkg a pkg availabe locally or github
+#' @param github_address github address of package code (eg. "msperlin/vdr")
 #' @param force_ref Logical (TRUE or FALSE) - defines whether to force formal
 #' reference (e.g. [@R-pkg])
 #' @param make_index Logical (TRUE or FALSE) - defines wheter to write index for
@@ -94,14 +95,23 @@ format_number <- function(x, digits = 4) {
 #'
 #' @examples
 #' format_pkg_citation("dplyr")
-format_pkg_citation <- function(pkg, force_ref = FALSE, make_index = TRUE) {
+format_pkg_citation <- function(pkg,
+                                github_address = NULL,
+                                force_ref = FALSE,
+                                make_index = TRUE) {
 
   installed_pkgs <- utils::installed.packages()[, 1]
 
   # check if package is installed
   if (!pkg %in% installed_pkgs) {
     cli::cli_alert_info("{pkg} not found, installing it..")
-    utils::install.packages(pkg)
+
+    if (is.null(github_address)) {
+      utils::install.packages(pkg)
+    } else {
+      remotes::install_github(github_address)
+    }
+
   }
 
   folder_db_citation <- fs::path_temp("bookdown-pkg-citations")
