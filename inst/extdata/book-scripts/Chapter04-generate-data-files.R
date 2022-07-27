@@ -199,13 +199,41 @@ p <- ggplot(df_perf) +
 p
 
 
-#  inflation (ALL)
-first_date <- '2000-01-01'
+#  stocks by country
+library(dplyr)
+
+first_date <- '2015-01-01'
 last_date <- Sys.Date()
+n_stocks <- 3
+set.seed(10)
 
-
-f_out <- stringr::str_glue(
-  'Chapter04-inflation-anual-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
+df_tickers <- bind_rows(
+  tibble(ticker = paste0(sample(yfR::yf_index_composition("IBOV")$ticker, n_stocks), ".SA"),
+         country = "Brazil"),
+  tibble(ticker = sample(yfR::yf_index_composition("SP500")$ticker, n_stocks),
+         country = "USA"),
+  tibble(ticker = paste0(sample(yfR::yf_index_composition("FTSE")$ticker, n_stocks), ".L"),
+         country = "UK")
 )
 
-write_csv(df_inflation_year, fs::path(data_dir, f_out ))
+df_yf <- yfR::yf_get(tickers = df_tickers$ticker,
+                     first_date = first_date,
+                     last_date = last_date) |>
+  left_join(df_tickers) |>
+  select(ref_date, ticker, country, cumret_adjusted_prices)
+
+p <- ggplot(df_yf, aes(x = ref_date, y = cumret_adjusted_prices, color = ticker)) +
+  geom_line() +
+  labs(title = "Desempenho de ações") +
+  theme_light() +
+  facet_wrap(~country)
+
+p
+
+f_out <- stringr::str_glue(
+  'Chapter04-stocks-by-country-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
+)
+
+readr::write_csv(
+  df_yf, fs::path(data_dir, f_out )
+  )
