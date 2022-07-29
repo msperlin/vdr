@@ -1,5 +1,4 @@
 # script for generating all book files
-
 library(tidyverse)
 
 data_dir <- 'inst/extdata/data/'
