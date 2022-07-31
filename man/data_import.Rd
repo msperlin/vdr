@@ -13,7 +13,7 @@ data_import(name_dataset)
 A path to the data file
 }
 \description{
-This is a helper function of book "Analyzing Financial and Economic Data with R" by Marcelo S. Perlin.
+This is a helper function of book "Visualização de dados com o R" by Marcelo S. Perlin.
 With this function you'll be able to read the tables used in the book using only file names.
 }
 \examples{
