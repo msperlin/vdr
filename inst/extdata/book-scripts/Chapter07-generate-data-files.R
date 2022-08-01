@@ -25,3 +25,30 @@ f_out <- stringr::str_glue(
 )
 
 readr::write_csv(df_ibge, fs::path(data_dir, f_out ))
+
+# universities
+url <- "https://download.inep.gov.br/microdados/microdados_censo_da_educacao_superior_2020.zip"
+zip_out <- fs::path(tempdir(), "uni-files")
+f_dl <- fs::path(tempdir(),
+                 basename(url))
+
+if (!fs::file_exists(f_dl)) {
+  options(download.file.method="curl", download.file.extra="-k -L")
+  download.file(url, f_dl)
+}
+
+unzip(f_dl,
+      exdir = zip_out,
+      junkpaths = TRUE)
+
+f_uni <- fs::path(zip_out, "MICRODADOS_CADASTRO_IES_2020.CSV")
+
+df_uni <- readr::read_csv2(f_uni, locale = readr::locale(encoding = "Latin1")) |>
+  dplyr::select(NU_ANO_CENSO, NO_IES, QT_DOC_TOTAL) |>
+  dplyr::filter(QT_DOC_TOTAL > 250)
+
+f_out <- stringr::str_glue(
+  'Chapter07-universities.csv'
+)
+
+readr::write_csv(df_uni, fs::path(data_dir, f_out ))
