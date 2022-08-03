@@ -211,4 +211,6 @@ format_vec_as_text <- function(str_in) {
     str_in[len]
   )
 
+  return(str_out)
+
 }
