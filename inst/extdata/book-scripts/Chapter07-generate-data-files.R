@@ -18,7 +18,9 @@ write_csv(df_mun, fs::path(data_dir, f_out ))
 f <- system.file("extdata/rawdata/raw_data_ibge.csv", package = "vdr")
 
 df_ibge <- readr::read_csv(f) |>
-  janitor::clean_names()
+  janitor::clean_names() |>
+  dplyr::rename(rendimento_mensal_domiciliar = rendimento_mensal_domiciliar_per_capita_r_2021) |>
+  select(uf, codigo, rendimento_mensal_domiciliar)
 
 f_out <- stringr::str_glue(
   'Chapter07-data-ibge.csv'
