@@ -79,7 +79,7 @@ df_single <- yfR::yf_get(
 )
 
 f_out <- stringr::str_glue(
-  'Chapter02-Petrobras-monthly-stock-prices-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
+  'Chapter02-PETR-stock-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
 )
 
 write_csv(df_single, fs::path(data_dir, f_out ))
