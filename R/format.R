@@ -175,13 +175,29 @@ format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
   fixed_this_fct <- stringr::str_replace_all(this_fct, stringr::fixed("_"), "\\_")
   str_index <- paste0("\\index{", pkg, "!", fixed_this_fct, "}")
 
+  dir_temp <- fs::path(fs::path_temp(), "fcts-citations")
+  fs::dir_create(dir_temp)
+  f_fct <- fs::path(dir_temp, this_str)
+
+  if (!fs::file_exists(f_fct)) {
+    fs::file_touch(f_fct)
+
+    str_pkg <- stringr::str_glue(
+      "**`{pkg}::{this_fct}()`**"
+    )
+  } else {
+    str_pkg <- stringr::str_glue(
+      "**`{this_fct}()`**"
+    )
+  }
+
   if (force_index) {
 
-    fct_citation <- stringr::str_glue("**`{pkg}::{this_fct}()`** {str_index}")
+    fct_citation <- stringr::str_glue("{str_pkg} {str_index}")
 
   } else {
 
-    fct_citation <- stringr::str_glue("**`{pkg}::{this_fct}()`**")
+    fct_citation <- stringr::str_glue("{str_pkg}")
 
   }
 
