@@ -8,11 +8,11 @@ library(GetBCBData)
 library(ggplot2)
 library(tidyverse)
 
-first_date <- '2018-01-01'
+first_date <- '2005-01-01'
 last_date <- '2022-07-01'
 
-# inflation 01
-df_inflation_1 <- gbcbd_get_series(
+# inflation
+df_inflation <- gbcbd_get_series(
   433,
   first.date = first_date,
   last.date = last_date,
@@ -25,45 +25,7 @@ f_out <- stringr::str_glue(
   'Chapter02-inflation-BR-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
 )
 
-write_csv(df_inflation_1, fs::path(data_dir, f_out ))
-
-# inflation 02
-first_date <- '2006-01-01'
-last_date <- '2010-01-01'
-
-df_inflation_2 <- gbcbd_get_series(
-  433,
-  first.date = first_date,
-  last.date = last_date,
-  cache.path =fs::path_temp('bcb')
-) |>
-  mutate(value = value/100) |>
-  janitor::clean_names()
-
-f_out <- stringr::str_glue(
-  'Chapter02-inflation-BR-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
-)
-
-write_csv(df_inflation_2, fs::path(data_dir, f_out ))
-
-# inflation 03
-first_date <- '2000-01-01'
-last_date <- '2005-01-01'
-
-df_inflation_3 <- gbcbd_get_series(
-  433,
-  first.date = first_date,
-  last.date = last_date,
-  cache.path =fs::path_temp('bcb')
-  ) |>
-  mutate(value = value/100) |>
-  janitor::clean_names()
-
-f_out <- stringr::str_glue(
-  'Chapter02-inflation-BR-{lubridate::year(first_date)}-{lubridate::year(last_date)}.csv'
-)
-
-write_csv(df_inflation_3, fs::path(data_dir, f_out ))
+write_csv(df_inflation, fs::path(data_dir, f_out ))
 
 
 ## Petrobras Stock Price ---
