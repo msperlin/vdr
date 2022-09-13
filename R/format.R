@@ -177,6 +177,11 @@ format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
 
   dir_temp <- fs::path(fs::path_temp(), "fcts-citations")
   fs::dir_create(dir_temp)
+
+  # fix name of temp file
+  this_str <- this_str |>
+    stringr::str_replace_all(pattern = stringr::fixed("::"), "-")
+
   f_fct <- fs::path(dir_temp, this_str)
 
   if (!fs::file_exists(f_fct)) {
