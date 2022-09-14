@@ -114,7 +114,16 @@ format_pkg_citation <- function(pkg,
 
   }
 
-  folder_db_citation <- fs::path_temp("bookdown-pkg-citations")
+  # check engine
+  my_engine <- knitr:::pandoc_to()
+
+  if (is.null(my_engine)) {
+    folder_db_citation <- fs::path_temp("GENERIC--pkg-citations")
+  } else {
+    folder_db_citation <- fs::path_temp(
+      stringr::str_glue("{my_engine}--pkg-citations")
+    )
+  }
 
   if (!fs::dir_exists(folder_db_citation)) fs::dir_create(folder_db_citation)
   available_cit <- basename(fs::dir_ls(folder_db_citation))
@@ -175,7 +184,18 @@ format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
   fixed_this_fct <- stringr::str_replace_all(this_fct, stringr::fixed("_"), "\\_")
   str_index <- paste0("\\index{", pkg, "!", fixed_this_fct, "}")
 
-  dir_temp <- fs::path(fs::path_temp(), "fcts-citations")
+  # check engine
+  my_engine <- knitr:::pandoc_to()
+
+  if (is.null(my_engine)) {
+    dir_temp <- fs::path(fs::path_temp(), "GENERIC--fct-citations")
+  } else {
+    dir_temp <- fs::path(fs::path_temp(),
+                         stringr::str_glue("{my_engine}--fct-citations")
+                         )
+  }
+
+
   fs::dir_create(dir_temp)
 
   # fix name of temp file
