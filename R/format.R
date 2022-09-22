@@ -115,7 +115,7 @@ format_pkg_citation <- function(pkg,
   }
 
   # check engine
-  my_engine <- knitr:::pandoc_to()
+  my_engine <- knitr::pandoc_to()
 
   if (is.null(my_engine)) {
     folder_db_citation <- fs::path_temp("GENERIC--pkg-citations")
@@ -185,7 +185,7 @@ format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
   str_index <- paste0("\\index{", pkg, "!", fixed_this_fct, "}")
 
   # check engine
-  my_engine <- knitr:::pandoc_to()
+  my_engine <- knitr::pandoc_to()
 
   if (is.null(my_engine)) {
     dir_temp <- fs::path(fs::path_temp(), "GENERIC--fct-citations")
