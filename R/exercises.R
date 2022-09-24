@@ -1,6 +1,6 @@
 #' Builds eoc exercises
 #'
-#' @param files_in files to render exercises
+#' @param folder_in folder with exercise files to render
 #' @param type_doc type of document (from knitr::pandoc_to())
 #'
 #' @return nothing
@@ -21,7 +21,7 @@ exercises_build <- function(folder_in, type_doc) {
 
   files_in <- fs::dir_ls(folder_in)
 
-  my_counter <<- 1
+  my_counter <- 1
 
   if (is.null(type_doc)) {
     type_doc = 'html'
@@ -37,7 +37,7 @@ exercises_build <- function(folder_in, type_doc) {
                      my_counter = my_counter,
                      type_doc)
 
-    my_counter <<- my_counter +1
+    my_counter <- my_counter + 1
   }
 
   return(invisible(TRUE))
@@ -49,7 +49,7 @@ exercises_build <- function(folder_in, type_doc) {
 exercise_to_text <- function(f_in, my_counter, type_doc) {
 
   # for naming exercises
-  basename_f_in <<- basename(f_in)
+  basename_f_in <- basename(f_in)
 
   text_pre_solution <- paste0('Para chegar no resultado anterior, deves executar o código abaixo. ',
                               'Para isso, abra um novo script no RStudio (Control+shift+N), ',
@@ -169,25 +169,6 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
 }
 
 
-replace_str_file <- function(f.in, f.out, str.id, str.replace) {
-
-  require(tidyverse)
-  txt.out <- str_c(read_lines(f.in), collapse = '\n')
-
-  for (i.str in seq(str.id)) {
-    txt.out <- str_replace(txt.out,
-                           pattern = fixed(str.id[i.str]),
-                           replacement = str.replace[i.str])
-
-  }
-
-  cat(txt.out, file = f.out)
-
-  return(invisible(TRUE))
-
-}
-
-
 #' Builds text for answers
 #'
 #' Used in eoc TRUE/FALSE exercises
@@ -212,10 +193,9 @@ replace_str_file <- function(f.in, f.out, str.id, str.replace) {
 #' 'O R não tem compatibilidade com diferentes linguagens de programação;'),
 #'                       sol = c(TRUE, FALSE))
 #'
-#' l <- adfeR::build_answers_text(text1,
+#' l <- build_answers_text(text1,
 #' text2,
 #' text3)
-#' build_answers_text("A", "B", "C")
 build_answers_text <- function(text1,
                                text2,
                                text3) {
@@ -283,16 +263,16 @@ check_answers <- function(answers_in) {
 #'
 #' @noRd
 gen_rnd_vec <- function(){
-  rnd_vec_1 <- c(1, seq(runif(1, 0.1, 0.2),
-                        runif(1, 0.7, 0.8),
+  rnd_vec_1 <- c(1, seq(stats::runif(1, 0.1, 0.2),
+                        stats::runif(1, 0.7, 0.8),
                         length.out = 4))
-  rnd_vec_2 <- c(1, seq(runif(1,1.1,1.2),
-                        runif(1,1.7, 1.8),
+  rnd_vec_2 <- c(1, seq(stats::runif(1,1.1,1.2),
+                        stats::runif(1,1.7, 1.8),
                         length.out = 4))
-  rnd_vec_3 <- c(1, seq(runif(1,0.25,0.5),
-                        runif(1,0.6,0.8),
+  rnd_vec_3 <- c(1, seq(stats::runif(1,0.25,0.5),
+                        stats::runif(1,0.6,0.8),
                         length.out = 2),
-                 seq(runif(1,1.2,2), length.out = 2))
+                 seq(stats::runif(1,1.2,2), length.out = 2))
 
   rnd_l <- list(rnd_vec_1, rnd_vec_2, rnd_vec_3)
   rnd_vec <- sample(rnd_l, 1)[[1]]

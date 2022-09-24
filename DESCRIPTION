@@ -21,7 +21,10 @@ Imports:
   cli, 
   fs,
   knitr,
-  remotes
+  remotes,
+  exams,
+  glue,
+  webexercises
 Remotes:
   msperlin/yfR,
   clauswilke/dviz.supp,

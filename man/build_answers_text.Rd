@@ -32,8 +32,7 @@ text3 <- dplyr::tibble(text = c('O R tem compatibilidade com diferentes linguage
 'O R não tem compatibilidade com diferentes linguagens de programação;'),
                       sol = c(TRUE, FALSE))
 
-l <- adfeR::build_answers_text(text1,
+l <- build_answers_text(text1,
 text2,
 text3)
-build_answers_text("A", "B", "C")
 }

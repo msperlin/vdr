@@ -7,9 +7,9 @@
 exercises_build(folder_in, type_doc)
 }
 \arguments{
-\item{type_doc}{type of document (from knitr::pandoc_to())}
+\item{folder_in}{folder with exercise files to render}
 
-\item{files_in}{files to render exercises}
+\item{type_doc}{type of document (from knitr::pandoc_to())}
 }
 \value{
 nothing
