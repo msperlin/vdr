@@ -1,0 +1,43 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Em 22/09/2022, o grupo [LatinoMetrics](https://latinometrics.substack.com/) publicou uma visualização de dados a respeito da impressão de confiança da população brasileira em relação as diferens mídias. O conteúdo pode ser acessado no  [Instagram]([https://www.instagram.com/p/Ciz8mFSrZj7/]), e é disponilizado abaixo:
+
+```{r, echo=FALSE, results = "asis"}
+cat("![Postagem do LatinoMetrics em 22/09/2022](00b-text-resources/figs/exercises-latinometrics-instagram_02.png)")
+```
+
+Observando a figura, destaque os elementos **textuais** e **gráficos** utilizados pelo autor.
+
+
+Solution
+================
+
+Os elementos textuais são:
+
+* título com fonte maior, e _caption_ com origem dos dados. Noto também que eixos _x_ e _y_ não possuem texto algum.
+
+Os elementos gráficos:
+
+* Uso de barras horizontais com a percentagem de respostas dos entrevistados. 
+
+* Ordenamento das barras, de forma que a mídia com maior percentagem de confiança, o SBT, fique acima das demais.
+
+* uso de logos das mídias jornalísticas no lado esquerdo do gráfico. 
+
+* uso de cores para direcionar a interpretação do gráfico. A cor vermelha indica a "não confiança" na emissora, enquanto a azul indica confiança.
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "latinometrics 2"
+exshuffle: TRUE
+

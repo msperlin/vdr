@@ -1,0 +1,30 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+No [Reddit/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comments/xoqi8w/revenue_and_budget_comparison_for_every_star_wars/)  é possível encontrar a visualização da receita de todos os filmes da franchise "Star Wars". 
+
+```{r, echo=FALSE, results = "asis"}
+cat("![Postagem do Reddit/dataisbeautiful](00b-text-resources/figs/exercises-starwars-reddit_01.png)")
+```
+
+Apesar de ser esteticamante interessante, o mesmo poderia ser melhorado. Com base no que aprendeu no livro, analise o gráfico e faça recomendações de melhoria.
+
+
+Solution
+================
+
+As melhorias... 
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "starwars--reddit"
+exshuffle: TRUE
+

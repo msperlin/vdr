@@ -9,7 +9,7 @@ Question
 Em 22/09/2022, o grupo [LatinoMetrics](https://latinometrics.substack.com/) publicou uma visualização de dados a respeito da impressão de confiança da população brasileira em relação as diferens mídias. O conteúdo pode ser acessado no  [Instagram]([https://www.instagram.com/p/Ciz8mFSrZj7/]), e é disponilizado abaixo:
 
 ```{r, echo=FALSE, results = "asis"}
-cat("![Postagem do LatinoMetrics em 22/09/2022](00b-text-resources/figs/exercises-latinometrics-instagram_01.png)")
+cat("![Postagem do LatinoMetrics em 22/09/2022](00b-text-resources/figs/exercises-latinometrics-instagram_02.png)")
 ```
 
 Observando a figura, destaque os elementos **textuais** e **gráficos** utilizados pelo autor.
@@ -20,15 +20,17 @@ Solution
 
 Os elementos textuais são:
 
-* título e _caption_ ..
-
-* legenda 
+* título com fonte maior, e _caption_ com origem dos dados. Noto também que eixos _x_ e _y_ não possuem texto algum.
 
 Os elementos gráficos:
 
-* uso de logos das emissoras de tv
+* Uso de barras horizontais com a percentagem de respostas dos entrevistados. 
 
-* uso de cores, com cor vermelha indicando a "não confiança" na emissora
+* Ordenamento das barras, de forma que a mídia com maior percentagem de confiança, o SBT, fique acima das demais.
+
+* uso de logos das mídias jornalísticas no lado esquerdo do gráfico. 
+
+* uso de cores para direcionar a interpretação do gráfico. A cor vermelha indica a "não confiança" na emissora, enquanto a azul indica confiança.
 
 
 

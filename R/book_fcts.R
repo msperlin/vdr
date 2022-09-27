@@ -97,7 +97,7 @@ book_strings_get <- function() {
     publication_years = c(2022),
     publication_names = c("Edi\\u00e7 01"),
     author_name = "Marcelo S. Perlin",
-    author_email = "marceloperlin@gmail.com"
+    author_email = "marcelo.perlin@ufrgs.br"
   )
 
   return(l_out)
