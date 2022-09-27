@@ -15,8 +15,8 @@ exercises_build <- function(folder_in, type_doc) {
 
   text_exercises <- stringr::str_glue(
     'Todas soluções de exercícios estão disponíveis no ',
-     '[site do livro]({link_eoc_exercises}).'
-    )
+    '[site do livro]({link_eoc_exercises}).'
+  )
 
 
   files_in <- fs::dir_ls(folder_in)
@@ -32,10 +32,16 @@ exercises_build <- function(folder_in, type_doc) {
     cat(text_exercises, '\n')
   }
 
+  supp_path <- c()
   for (i_ex in files_in) {
-    exercise_to_text(i_ex,
-                     my_counter = my_counter,
-                     type_doc)
+    l_out <- exercise_to_text(i_ex,
+                              my_counter = my_counter,
+                              type_doc)
+
+    supp_path <- c(
+      supp_path,
+      l_out$supplements
+    )
 
     my_counter <- my_counter + 1
   }
@@ -62,6 +68,9 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
   dir.create(my_dir)
 
   #browser()
+  # supp_folder <- "~/Desktop/supp"
+  # fs::dir_create(supp_folder)
+
   suppressMessages({
     l_out <- exams::xexams(f_in,
                            driver = list(sweave = list(png = TRUE)),
@@ -75,13 +84,15 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
   solution <- paste0(l_out$exam1$exercise1$solution,
                      collapse = '\n')
   ex_type <- l_out$exam1$exercise1$metainfo$type
+  supplements <- l_out$exam1$exercise1$supplements
 
-  #browser()
+  #f_suppl <- fs::dir_ls(supplements)
+
   if (type_doc %in% c('latex', 'epub3')) {
 
     my_str <- stringr::str_glue(
       '\n\n {sprintf("%02d", my_counter)} - {exercise_text} \n\n '
-      )
+    )
 
     if (ex_type == 'schoice') {
       n_alternatives <- length(alternatives)
@@ -99,8 +110,6 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
 
 
     cat(my_str)
-
-    return(invisible(TRUE))
 
   } else if (type_doc == 'html') {
 
@@ -129,8 +138,8 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
       if (stringr::str_detect(solution,
                               '```text')) {
         text_sol <- stringr::str_glue('A solução pode ser encontrada pelo código abaixo. Para rodar, ',
-                             'abra um novo script no RStudio (Control+shift+N), copie e cole o código, e rode o ',
-                             'script apertando Control+Shift+Enter.')
+                                      'abra um novo script no RStudio (Control+shift+N), copie e cole o código, e rode o ',
+                                      'script apertando Control+Shift+Enter.')
 
       } else {
         text_sol <- ''
@@ -164,7 +173,10 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
 
   }
 
-  return(invisible(TRUE))
+  l_out <- list(supplements = supplements)
+
+
+  return(l_out)
 
 }
 
@@ -209,8 +221,8 @@ build_answers_text <- function(text1,
                            text3_chosen$sol), collapse = ', ')
 
   other_answers <- tidyr::expand_grid(col1 = c('TRUE', 'FALSE'),
-                               col2 = c('TRUE', 'FALSE'),
-                               col3 = c('TRUE', 'FALSE')) |>
+                                      col2 = c('TRUE', 'FALSE'),
+                                      col3 = c('TRUE', 'FALSE')) |>
     dplyr::mutate(answer = glue::glue('{col1}, {col2}, {col3}') ) |>
     dplyr::filter(answer != right_answer)
 

@@ -1,0 +1,27 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+O grupo [LatinoMetrics](https://latinometrics.substack.com/) produz e distribui um conteúdo muito interessante de visualização de dados econômicos para a América Latina. No [Instagram](https://www.instagram.com/latinometrics/) é possível acessar todas as suas publicações. 
+
+Observando o material do [Instagram](https://www.instagram.com/latinometrics/), visualize as cinco últimas imagens disponibilizadas na página principal. Nestas cinco, destaque os elementos estruturais utilizados por todas as figuras, isto é, quais elementos foram repetidos entre uma figura e outra.
+
+
+Solution
+================
+
+solução
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "latinometrics 1"
+exshuffle: TRUE
+
