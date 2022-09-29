@@ -136,14 +136,14 @@ format_pkg_citation <- function(pkg,
 
   if ((pkg %in% available_cit) && (!force_ref)) {
 
-    pkg_citation <- stringr::str_glue("**`{pkg}`** {str_index}")
+    pkg_citation <- stringr::str_glue("**{pkg}** {str_index}")
 
   } else {
 
     this_cit_file <- fs::path(folder_db_citation, pkg)
     fs::file_touch(this_cit_file)
 
-    pkg_citation <- stringr::str_glue("**`{pkg}`** {str_index} [@R-{pkg}]")
+    pkg_citation <- stringr::str_glue("**{pkg}** {str_index} [@R-{pkg}]")
   }
 
   return(pkg_citation)
@@ -165,7 +165,9 @@ format_pkg_citation <- function(pkg,
 #'
 #' @examples
 #' format_fct_ref("dplyr", "group_by")
-format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
+format_fct_ref <- function(pkg, this_fct,
+                           force_index = TRUE,
+                           force_pkg = FALSE) {
 
   installed_pkgs <- utils::installed.packages()[, 1]
 
@@ -208,12 +210,20 @@ format_fct_ref <- function(pkg, this_fct, force_index = TRUE) {
     fs::file_touch(f_fct)
 
     str_pkg <- stringr::str_glue(
-      "**`{pkg}::{this_fct}()`**"
+      "**{pkg}::{this_fct}()**"
     )
   } else {
-    str_pkg <- stringr::str_glue(
-      "**`{this_fct}()`**"
-    )
+
+    if (force_pkg) {
+      str_pkg <- stringr::str_glue(
+        "**{pkg}::{this_fct}()**"
+      )
+    } else {
+      str_pkg <- stringr::str_glue(
+        "**{this_fct}()**"
+      )
+    }
+
   }
 
   if (force_index) {
