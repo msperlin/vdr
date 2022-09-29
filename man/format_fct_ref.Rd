@@ -4,7 +4,7 @@
 \alias{format_fct_ref}
 \title{Produces index string for pkg::function}
 \usage{
-format_fct_ref(pkg, this_fct, force_index = TRUE)
+format_fct_ref(pkg, this_fct, force_index = TRUE, force_pkg = FALSE)
 }
 \arguments{
 \item{pkg}{a pkg availabe locally or github}
