@@ -1,0 +1,37 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando o pacote `yfR`, baixe os dados dos preços da Grendene, ticker = _GRND3.SA_, desde 2015 até o dia atual. Com base nos dados importados, crie um histograma dos retornos diários da ação.
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+library(ggplot2)
+
+ticker <- "GRND3.SA"
+df_yf <- yfR::yf_get(ticker, 
+                     first_date = "2015-01-01", 
+                     last_date = Sys.Date())
+
+p <- ggplot(df_yf, aes(x = ret_adjusted_prices)) + 
+  geom_histogram()
+
+p
+```
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "stats 01"
+exshuffle: TRUE
+

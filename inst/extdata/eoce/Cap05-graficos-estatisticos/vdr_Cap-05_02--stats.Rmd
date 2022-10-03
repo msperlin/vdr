@@ -1,0 +1,51 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando o pacote `yfR` e argumento `freq_data = 'monthly'` em `yf_get`, baixe os dados dos preços **mensais** da Petrobras, ticker = _PETR3.SA_, desde 2015 até o dia atual. Com base nos dados importados, crie um histograma dos retornos mensais  da ação, adicionando os seguintes itens ao gráfico:
+
+- título e subtítulo;
+- texto no eixo x e y;
+- caption;
+- tema `theme_light`
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+library(ggplot2)
+library(stringr)
+
+ticker <- "PETR3.SA"
+df_yf <- yfR::yf_get(ticker, freq_data = 'monthly',
+                     first_date = "2015-01-01", 
+                     last_date = Sys.Date())
+
+p <- ggplot(df_yf, aes(x = ret_adjusted_prices)) + 
+  geom_histogram() + 
+  labs(
+    title = str_glue("Histograma de Retornos Mensais da {ticker}"),
+    subtitle = str_glue("Dados entre {min(df_yf$ref_date)} e {max(df_yf$ref_date)}"),
+    caption = "Dados do Yahoo Finance",
+    x = "Retorno Mensal",
+    y = "Frequência"
+  ) + 
+  theme_light()
+
+p
+```
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "stats 01"
+exshuffle: TRUE
+

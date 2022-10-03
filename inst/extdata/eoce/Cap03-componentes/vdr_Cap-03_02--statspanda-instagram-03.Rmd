@@ -6,9 +6,7 @@
 Question
 ========
 
-[Statspanda](https://www.instagram.com/statspanda/?hl=en) é outro grupo especializado em produção de conteúdo relacionado a visualização de dados, porém com assuntos muito mais abrangentes que o LatinoMetrics. 
-
-Em 17/09/2022, o grupo publicou a seguinte figura no [Instagram](https://www.instagram.com/p/CaFZoVpO3gc/?hl=en):
+[Statspanda](https://www.instagram.com/statspanda/?hl=en) é outro grupo especializado em produção de conteúdo relacionado a visualização de dados, porém com assuntos muito mais abrangentes que o LatinoMetrics. Em 17/09/2022, o grupo publicou a seguinte figura no [Instagram](https://www.instagram.com/p/CaFZoVpO3gc/?hl=en):
 
 ```{r, echo=FALSE, results = "asis"}
 cat("![Postagem do Statspanda em 19/09/2022](00b-text-resources/figs/exercises-statspanda-instagram_01.png)")
@@ -22,16 +20,19 @@ Solution
 
 Os elementos textuais são:
 
-* título e _caption_ ..
+* título e subtítulo com a mensagem do gráfico;
 
-* legenda 
+* texto nos eixos verticais e horizontais;
 
-Os elementos gráficos:
+* o número de mortes acima de cada barra do gráfico;
 
-* uso de logos das emissoras de tv
+Os elementos gráficos são:
 
-* uso de cores, com cor vermelha indicando a "não confiança" na emissora
+* uso de barras verticais para indicar a mortalidade das diferentes doenças;
 
+* uso de logos das doenças em cada barra;
+
+* uso de cores sugestivas, com cor preta para a doença mais mortífera;
 
 
 Meta-information

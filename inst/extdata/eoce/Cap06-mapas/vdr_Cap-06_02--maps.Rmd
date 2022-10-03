@@ -1,0 +1,34 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando função `geobr::read_indigenous_land`, baixe os dados do território indígena no Brasil e adicione esta camada ao gráfico do Brasil criado anteriormente, com a área indígena na cor vermelha. 
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+df_sf <- geobr::read_indigenous_land()
+br <- geobr::read_country()
+
+p <- ggplot() + 
+  geom_sf(data = br) +
+  geom_sf(data = df_sf, color = 'red')
+
+p
+```
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "stats 01"
+exshuffle: TRUE
+

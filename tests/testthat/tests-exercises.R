@@ -29,5 +29,14 @@ test_that("exercise functions", {
     # expect_true(flag == TRUE)
   }
 
+  # exercises compilation to html
+  temp_path <- fs::file_temp("testthat-vdr-exercises-")
+  exercises_compile_solution(dir_output = temp_path)
+
+  n_files <- length(
+    fs::dir_ls(temp_path)
+  )
+
+  expect_true(n_files == 1)
 
 })

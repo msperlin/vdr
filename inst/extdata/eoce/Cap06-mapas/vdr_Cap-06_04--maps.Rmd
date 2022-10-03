@@ -1,0 +1,73 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+f_data <- "Chapter07-latlong-cities-brazil.csv"
+
+av_data <- vdr::data_list(be_silent = TRUE)
+if (!f_data %in% av_data) {
+  cli::cli_abort("cant find {f_data}")
+}
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando função `geobr::read_state()`, baixe os dados do estado do Rio Grande do Sul e, com os dados disponíveis no arquivo "`r f_data`" do pacote `vdr`:
+
+1. mostre as cidades gaúchas como pontos azuis no mapa, ajustando o tamanho e transparência dos pontos para melhor visualização do mapa;
+2. mostre a capital, Porto alegre, como um ponto vermelho com tamanho e intensidade maior.
+3. adicione o texto "PORTO ALEGRE" em preto, acima do ponto de localização da capital.
+4. adicione título e caption para o gráfico
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+df_rs <- geobr::read_state(code_state = "RS")
+
+f_cities <- "Chapter07-latlong-cities-brazil.csv"
+df_cities_rs <- vdr::data_import(f_cities) |>
+  dplyr::filter(codigo_uf == 43) # 43 is state of RS
+
+poa <- df_cities_rs |>
+  dplyr::filter(capital == TRUE)
+
+p <- ggplot() + 
+  geom_sf(data = df_rs) + 
+  # etapa 01
+  geom_point(data = df_cities_rs,  
+             aes(y = latitude, x = longitude),
+             color = 'blue',
+             size = 1,
+             alpha = 0.5) + 
+  # etapa 02
+  geom_point(data = poa,
+             aes(y = latitude, x = longitude),
+             color = 'red',
+             size = 2,
+             alpha = 1) +
+  # etapa 03
+  geom_text(data = poa,
+             aes(y = latitude, x = longitude,
+                 label = "PORTO ALEGRE"),
+             color = 'black',
+             size = 3,
+             alpha = 1,
+            nudge_y = 0.25) + 
+  # etapa 04
+  labs(title = "Cidades do Estado do Rio Grande do Sul",
+       caption = "Dados do IBGE e pacote vdr")
+  
+
+p
+```
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "stats 01"
+exshuffle: TRUE
+

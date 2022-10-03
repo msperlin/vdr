@@ -1,0 +1,32 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando função `geobr::read_country`, baixe os dados do território do Brasil e mostre a área em um novo gráfico.
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+br <- geobr::read_country()
+
+p <- ggplot() + 
+  geom_sf(data = br) 
+
+p
+```
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "stats 01"
+exshuffle: TRUE
+

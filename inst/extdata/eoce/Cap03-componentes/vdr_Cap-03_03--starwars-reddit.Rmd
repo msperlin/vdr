@@ -6,19 +6,24 @@
 Question
 ========
 
-No [Reddit/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comments/xoqi8w/revenue_and_budget_comparison_for_every_star_wars/)  é possível encontrar a visualização da receita de todos os filmes da franchise "Star Wars". 
+No [Reddit/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/comments/xoqi8w/revenue_and_budget_comparison_for_every_star_wars/)  é possível encontrar a visualização da receita de todos os filmes da franchise _Star Wars_. 
 
 ```{r, echo=FALSE, results = "asis"}
 cat("![Postagem do Reddit/dataisbeautiful](00b-text-resources/figs/exercises-starwars-reddit_01.png)")
 ```
 
-Apesar de ser esteticamante interessante, o mesmo poderia ser melhorado. Com base no que aprendeu no livro, analise o gráfico e faça recomendações de melhoria.
+Apesar de ser esteticamante interessante, o mesmo poderia ser melhorado. Com base no que aprendeu no livro, analise o gráfico e faça recomendações para  sua melhoria buscando claridade e simplicidade.
 
 
 Solution
 ================
 
-As melhorias... 
+Assumindo que a mensagem do gráfico é o faturamente ano a ano de todos os filmes relacionados a _franchise_, as mudanças que certamente melhorariam o gráfico são:
+
+1. modificar o gráfico para um com o tempo no eixo horizontal, o qual é mais intuitivo;
+1. usar barras verticais para cada filme, adicionando um texto com o "budget" de cada filme no topo de cada barra;
+1. remover as "espadas de laser", as quais não tem finalidade alguma na interpretação do gráfico;
+1. usar cores para ressaltar os filmes com maiores faturamentos;
 
 
 Meta-information

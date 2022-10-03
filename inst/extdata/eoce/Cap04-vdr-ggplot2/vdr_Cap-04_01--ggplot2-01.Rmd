@@ -1,0 +1,38 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Usando o R, crie um vetor de valores aleatórios da distribuição Normal com o comando `rnorm(N)`, onde N é igual a 100. 
+Crie um gráfico de pontos onde o eixo _y_ é representado pela série anterior, e o eixo _x_ é simplesmente a contagem dos valores (1..100).
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+require(ggplot2)
+
+N <- 100
+vec <- rnorm(N)
+df <- dplyr::tibble(
+  y = vec,
+  x = 1:N
+  )
+
+p <- ggplot(df, aes(x = x, y = y)) + 
+  geom_point()
+
+p
+```
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "ggplot 01"
+exshuffle: TRUE
+

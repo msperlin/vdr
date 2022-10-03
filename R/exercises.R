@@ -366,17 +366,77 @@ exercises_dir_get <- function(name_dir) {
 #'
 #' @examples
 #' exercises_dir_list()
-exercises_dir_list <- function() {
+exercises_dir_list <- function(silent = FALSE) {
   package_dir <- system.file("extdata/eoce",
                              package = "vdr")
 
   available_dirs <- basename(fs::dir_ls(package_dir))
 
-  cli::cli_h3("List of available eoce")
+  if (!silent) {
+    cli::cli_h3("List of available eoce")
 
-  for (i_dir in available_dirs) {
-    cli::cli_alert_info("{i_dir}")
+    for (i_dir in available_dirs) {
+      cli::cli_alert_info("{i_dir}")
+    }
   }
 
   return(invisible(available_dirs))
+}
+
+#' Compiles solution of exercises
+#'
+#' This function will compile the solution of exercises from the book to
+#' a .html file. Aternativelly, all solutiona are available at <www.msperlin.com/vdr>
+#'
+#' @param dir_output directory where to copy html file (e.g. '~/Desktop')
+#'
+#' @return nothing..
+#' @export
+#'
+#' @examples
+#'
+#' exercises_compile_solution(dir_output = fs::path_temp())
+exercises_compile_solution <- function(dir_output = "~/vdr-solutions") {
+  fs::dir_create(dir_output)
+
+  dir_exercises <- exercises_dir_list(TRUE)
+
+  l_exerc <- purrr::map(
+    dir_exercises, function(x) fs::dir_ls(exercises_dir_get(x))
+    )
+
+  f_exerc <- do.call(c, l_exerc)
+
+  temp_dir <- f_out <- fs::file_temp('eoc-compilation')
+  fs::dir_create(temp_dir)
+
+  html_template <-   fs::path(system.file("extdata/templates",
+                                          package = "vdr"),
+                              "html_template.html")
+
+  cli::cli_alert_info("Compilando soluções de exercícios")
+  exams::exams2html(f_exerc, n = 1,
+                    solution = TRUE,
+                    dir = temp_dir,
+                    template = html_template)
+
+  # copy files
+  f_out <- stringr::str_glue(
+    '{format(Sys.time(), "%Y%m%d %H%M%S")}-Soluções-Exercícios-VDR.html'
+  )
+
+  cli::cli_alert_info("Copiando arquivos")
+  fs::file_copy(
+    fs::dir_ls(temp_dir),
+    fs::path(dir_output, f_out),
+    overwrite = TRUE
+  )
+
+  cli::cli_alert_success("Sucesso!")
+
+  cli::cli_alert_info("Arquivo disponível em {fs::path_expand(fs::path(dir_output, f_out))}")
+  cli::cli_alert_info("Localize o arquivo no seu navegador preferido e abra-o com dois cliques em um browser de internet.")
+
+  return(invisible(TRUE))
+
 }

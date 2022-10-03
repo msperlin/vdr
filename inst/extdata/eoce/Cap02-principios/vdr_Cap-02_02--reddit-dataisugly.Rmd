@@ -1,0 +1,32 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+No fórum online do Reddit é possível encontrar o grupo [r/dataisugly](https://www.reddit.com/r/dataisugly/), o qual contém inúmeros posts sobre visualizações de dados realizadas da forma errada. Na data de 27/09/2022 foi publicado a seguinte [mensagem](https://www.reddit.com/r/dataisugly/comments/xphz87/polls_for_upcoming_s%C3%A3o_paulo_state_governor/) no fórum:
+
+
+```{r, echo=FALSE, results = "asis"}
+cat("![Publicação do reddit/dataisuglu em 27/09/2022](00b-text-resources/figs/exercises-reddit-brazil.jpg)")
+```
+
+Analise o gráfico e, sem buscar a resposta no fórum, indique qual o problema com o gráfico.
+
+
+Solution
+================
+
+O problema do gráfico é a escala errada para o eixo vertical. Note que o valor de 20% é compartilhado pelo candidato Garcia e Tarcísio, porém em localizações muito diferentes. É impossível de dizer se foi erro do programador ou alguma intenção política. Porém, o visual do gráfico certamente dá mais peso para um candidato do que para o outro.
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "reddit brazil"
+exshuffle: TRUE
+

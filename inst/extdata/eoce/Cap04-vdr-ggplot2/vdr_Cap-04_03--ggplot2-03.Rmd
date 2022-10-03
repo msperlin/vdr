@@ -1,0 +1,46 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Para o mesmo gráfico anterior, adicione uma nova coluna chamada `type` no dataframe, a qual pode tomar o valor "A" ou "B". 
+Para isto, podes usar o comando `sample(c("A", "B"), size = N, replace = TRUE)`. Note que o valor de N foi definido anteriormente.
+
+Com base no novo dataframe, crie um gráfico de linhas com cores diferentes para cada valor em `type`.
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+require(ggplot2)
+
+N <- 100
+vec <- rnorm(N)
+df <- dplyr::tibble(
+  y = vec,
+  x = 1:N,
+  type = sample(c("A", "B"), size = N, replace = TRUE)
+  )
+
+p <- ggplot(df, aes(x = x, y = y, color = type)) + 
+  geom_point() + 
+  labs(title = "TÍTULO",
+       subtitle = "SUBTÍTULO",
+       caption = "CAPTION",
+       x = "texto X",
+       y = "texto Y")
+
+p
+```
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "ggplot 03"
+exshuffle: TRUE
+

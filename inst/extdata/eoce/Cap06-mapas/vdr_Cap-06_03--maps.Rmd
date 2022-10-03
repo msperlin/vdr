@@ -1,0 +1,34 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando função geobr::read_state()`, baixe os dados de todos os estados do Brasil e, em um mapa do país, mostre os limites de cada estado na cor vermelha. 
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+df_states <- geobr::read_state(code_state = "all")
+br <- geobr::read_country()
+
+p <- ggplot() + 
+  geom_sf(data = br) +
+  geom_sf(data = df_states, color = 'red')
+
+p
+```
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "stats 01"
+exshuffle: TRUE
+
