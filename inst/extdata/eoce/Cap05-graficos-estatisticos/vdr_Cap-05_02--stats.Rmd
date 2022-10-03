@@ -17,7 +17,7 @@ Utilizando o pacote `yfR` e argumento `freq_data = 'monthly'` em `yf_get`, baixe
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution, eval=FALSE, echo = TRUE}
 library(ggplot2)
 library(stringr)
 

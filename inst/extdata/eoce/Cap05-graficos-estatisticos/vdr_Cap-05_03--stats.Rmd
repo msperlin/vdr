@@ -28,7 +28,7 @@ Com base nos dados da coluna `age`, crie um gráfico de **densidade** para a dis
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution, eval=FALSE, echo = TRUE}
 library(microdatasus) 
 
 df_sus <- fetch_datasus(year_start = 2019, 

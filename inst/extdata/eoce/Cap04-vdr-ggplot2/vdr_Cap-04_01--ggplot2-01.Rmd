@@ -13,7 +13,9 @@ Crie um gráfico de pontos onde o eixo _y_ é representado pela série anterior,
 Solution
 ================
 
-```{r solution, eval=FALSE}
+A solução é dada pelo código abaixo:
+
+```{r, eval=FALSE}
 require(ggplot2)
 
 N <- 100
