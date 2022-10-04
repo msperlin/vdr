@@ -17,10 +17,10 @@ data_list <- function(be_silent = FALSE) {
   my_files <- list.files(path_data)
 
   if (!be_silent) {
-    cli::cli_h1("Available data files (name|path)")
+    cli::cli_h1("Available data files at {fs::path_expand(path_data)}")
 
     for (i_file in my_files) {
-      cli::cli_alert_info("{i_file}\t| {data_path(i_file)}  ")
+      cli::cli_alert_info("{i_file}")
     }
 
     message('')

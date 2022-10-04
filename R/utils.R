@@ -37,7 +37,7 @@ get_pkg_dir <- function(sub_dir) {
 
 #' Returns local dir of pkg
 #'
-#' @param sub_dir the sub dir to return path
+#' @param img_file name of img file
 #'
 #' @return a path
 #' @export

@@ -7,7 +7,7 @@
 exercises_get_img(img_file)
 }
 \arguments{
-\item{sub_dir}{the sub dir to return path}
+\item{img_file}{name of img file}
 }
 \value{
 a path

@@ -6,6 +6,9 @@
 \usage{
 exercises_dir_list(silent = FALSE)
 }
+\arguments{
+\item{silent}{be silent?}
+}
 \value{
 a char vector
 }

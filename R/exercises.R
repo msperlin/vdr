@@ -18,7 +18,6 @@ exercises_build <- function(folder_in, type_doc) {
     '[site do livro]({link_eoc_exercises}).'
   )
 
-
   files_in <- fs::dir_ls(folder_in)
 
   my_counter <- 1
@@ -86,8 +85,6 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
   ex_type <- l_out$exam1$exercise1$metainfo$type
   supplements <- l_out$exam1$exercise1$supplements
 
-  #f_suppl <- fs::dir_ls(supplements)
-
   if (type_doc %in% c('latex', 'epub3')) {
 
     my_str <- stringr::str_glue(
@@ -102,9 +99,6 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
                          letters[i_alt],') ', alternatives[i_alt],
                          '\n')
       }
-
-      #browser()
-
 
     }
 
@@ -137,9 +131,9 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
 
       if (stringr::str_detect(solution,
                               '```text')) {
-        text_sol <- stringr::str_glue('A solução pode ser encontrada pelo código abaixo. Para rodar, ',
+        text_sol <- stringr::str_glue('<p>A solução pode ser encontrada pelo código abaixo. Para rodar, ',
                                       'abra um novo script no RStudio (Control+shift+N), copie e cole o código, e rode o ',
-                                      'script apertando Control+Shift+Enter.')
+                                      'script apertando Control+Shift+Enter.</p>')
 
       } else {
         text_sol <- ''
@@ -147,18 +141,16 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
 
     }
 
-
     my_str <- paste0('\n\n <hr> \n',
-                     webexercises::total_correct(), '\n',
+                     #webexercises::total_correct(), '\n',
                      '### Q.', my_counter, '{-} \n',
                      exercise_text, '\n',
                      my_answers_text)
 
-
     temp_id <- basename(tempfile(pattern = 'collapse_'))
     sol_str <- stringr::str_glue(
       ' <div style="text-align: left; margin-top: 2px; padding: 13px 0 10px 0;"><p><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{temp_id}" aria-expanded="false" aria-controls="collapseExample">
-    Solução
+    Clique para a solução
   </button> </p> </div>
 
 <div class="collapse" id="{temp_id}">
@@ -176,163 +168,10 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
   l_out <- list(supplements = supplements)
 
 
-  return(l_out)
+  return(invisible(l_out))
 
 }
 
-
-#' Builds text for answers
-#'
-#' Used in eoc TRUE/FALSE exercises
-#'
-#' @param text1 tibble for alternative 01
-#' @param text2 tibblefor alternative 02
-#' @param text3 tibble for alternative 03
-#'
-#' @return a list
-#' @export
-#'
-#' @examples
-#' text1 <- dplyr::tibble(text = c('O R é uma plataforma de programação madura e estável;',
-#' 'O R foi desenvolvido em 2018 e é um projeto inovador e instável;'),
-#' sol = c(TRUE, FALSE))
-#'
-#' text2 <- dplyr::tibble(text = c('O RStudio é uma interface ao R, aumentando a produtividade do analista;',
-#' 'O RStudio é uma linguagem de programação alternativa ao R;'),
-#'                       sol = c(TRUE, FALSE))
-#'
-#' text3 <- dplyr::tibble(text = c('O R tem compatibilidade com diferentes linguagens de programação;',
-#' 'O R não tem compatibilidade com diferentes linguagens de programação;'),
-#'                       sol = c(TRUE, FALSE))
-#'
-#' l <- build_answers_text(text1,
-#' text2,
-#' text3)
-build_answers_text <- function(text1,
-                               text2,
-                               text3) {
-
-  text1_chosen <- text1[sample(1:nrow(text1), 1), ]
-  text2_chosen <- text2[sample(1:nrow(text2), 1), ]
-  text3_chosen <- text3[sample(1:nrow(text3), 1), ]
-
-  right_answer <- paste0(c(text1_chosen$sol,
-                           text2_chosen$sol,
-                           text3_chosen$sol), collapse = ', ')
-
-  other_answers <- tidyr::expand_grid(col1 = c('TRUE', 'FALSE'),
-                                      col2 = c('TRUE', 'FALSE'),
-                                      col3 = c('TRUE', 'FALSE')) |>
-    dplyr::mutate(answer = glue::glue('{col1}, {col2}, {col3}') ) |>
-    dplyr::filter(answer != right_answer)
-
-  my_answers <- c(right_answer,
-                  sample(other_answers$answer, 4))
-
-  check_answers(my_answers)
-
-  return(list(my_answers = my_answers,
-              texts = c(text1_chosen$text,
-                        text2_chosen$text,
-                        text3_chosen$text)))
-
-}
-
-#' Tests answers vector
-#'
-#' @noRd
-check_answers <- function(answers_in) {
-
-  n_answers <- 5
-  if (length(answers_in) != n_answers) {
-    stop('Found question with less or more than 5 answers..')
-  }
-
-  n_unique <- dplyr::n_distinct(answers_in)
-  if (n_unique != n_answers) {
-    stop('Found question with less or more than 5 UNIQUE answers..')
-  }
-
-  flag <- any(stringr::str_trim(answers_in) == '')
-  if (flag) {
-    stop('Found question with empty answer..')
-  }
-
-  if (is.numeric(answers_in)) {
-    flag <- any(!is.finite(answers_in))
-
-    if (flag) {
-      stop('Found numeric question with non finite number..')
-    }
-
-  }
-
-  return(invisible(TRUE))
-
-}
-
-#' Generate random weights for answers
-#'
-#' @noRd
-gen_rnd_vec <- function(){
-  rnd_vec_1 <- c(1, seq(stats::runif(1, 0.1, 0.2),
-                        stats::runif(1, 0.7, 0.8),
-                        length.out = 4))
-  rnd_vec_2 <- c(1, seq(stats::runif(1,1.1,1.2),
-                        stats::runif(1,1.7, 1.8),
-                        length.out = 4))
-  rnd_vec_3 <- c(1, seq(stats::runif(1,0.25,0.5),
-                        stats::runif(1,0.6,0.8),
-                        length.out = 2),
-                 seq(stats::runif(1,1.2,2), length.out = 2))
-
-  rnd_l <- list(rnd_vec_1, rnd_vec_2, rnd_vec_3)
-  rnd_vec <- sample(rnd_l, 1)[[1]]
-
-  return(rnd_vec)
-}
-
-#' Make random numeric answers
-#'
-#' @noRd
-make_random_answers <- function(solution,
-                                candidates = NA,
-                                is_cash = FALSE) {
-  if (!any(is.na(candidates))) {
-    candidates <- unique(candidates)
-    candidates <- candidates[candidates != solution]
-
-    if (length(candidates) < 4) {
-      stop('Candidate vector is lower than 4!')
-    }
-
-    my_answers <- c(solution,
-                    sample(candidates, 4))
-  } else {
-    # check if is numeric
-    if (class(solution) %in% c('numeric', 'integer')) {
-      # find number of decimais
-      n_decimals <- decimal_places(solution)
-
-      if (n_decimals ==0) {
-        my_answers <- floor(solution*gen_rnd_vec())
-      } else {
-        if (n_decimals > 4) n_decimals <- 4
-        my_answers <- format(solution*gen_rnd_vec(),
-                             digits = n_decimals)
-      }
-
-      if (is_cash) {
-        my_answers <- format_cash(
-          as.numeric(my_answers))
-      }
-
-    }
-
-  }
-
-  return(my_answers)
-}
 
 #' Get dir of exercise
 #'
@@ -361,6 +200,7 @@ exercises_dir_get <- function(name_dir) {
 
 #' Lists available eoc dir
 #'
+#' @param silent be silent?
 #' @return a char vector
 #' @export
 #'

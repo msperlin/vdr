@@ -1,0 +1,83 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Pacote `hrbrthemes` oferece uma grande variedade de temas adicionais a serem utilizados em um gráfico do `ggplot2`. Todas funções de tema possum um padrão bem distinto, onde inicial o nome com o texto `theme_`. Baseado nesta informação e também no uso da função `ls`, podemos descobrir o nome de todas as funções de tema do `hrbrthemes` com o código abaixo:
+
+```{r, echo=TRUE, eval=FALSE}
+library(hrbrthemes)
+
+all_fcts <- ls("package:hrbrthemes")
+
+idx <- all_fcts |> 
+  stringr::str_which("theme_")
+
+theme_fcts <- all_fcts[idx]
+```
+
+Com base no código anterior:
+
+1. use as ferramentas de programação do R para, de forma automática, aplicar todos os temas anteriores para o gráfico gerado acima.
+1. agrege todos os gráfico em um único arquivo com função `cowplot::plot_grid` 
+1. salve a figura resultante como `hrbrthemes-demo.png`, pasta documentos (atalho com `~`). Defina o tamanho da figura como height = 20cm e width = 30cm. DICA: Caso a figura gravada sair com fundo transparente, abra-a em um navegador da web, tal como o Chrome ou firefox.
+
+```{r, echo=TRUE, eval=FALSE}
+library(ggplot2)
+
+p <- ggplot(
+  yfR::yf_get("USIM5.SA", first_date = "2018-01-01"),
+  aes(x = ref_date, y = price_adjusted)
+) + 
+  geom_line() +
+  labs(subtitle = "SUBTITLE",
+       caption = "CAPTION")
+```
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+library(hrbrthemes)
+library(ggplot2)
+
+plot_fct <- function(theme_str, p) {
+  
+    this_theme <- eval(parse(text = theme_str))
+    p <- p + 
+      this_theme() +
+      labs(title = stringr::str_glue("{theme_str}"))
+    
+    return(p)
+}
+
+all_fcts <- ls("package:hrbrthemes")
+
+idx <- all_fcts |> 
+  stringr::str_which("theme_")
+
+theme_fcts <- all_fcts[idx]
+
+# fina all theme fcts
+my_themes <- theme_fcts
+
+l_p <- purrr::map(my_themes, plot_fct, p = p)
+
+p_grid <- cowplot::plot_grid(plotlist = l_p)
+
+ggsave("~/hrbrthemes-demo.png", p_grid, height = 20, width = 30, units = "cm")
+```
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "programming"
+exshuffle: TRUE
+

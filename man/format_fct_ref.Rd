@@ -13,6 +13,8 @@ format_fct_ref(pkg, this_fct, force_index = TRUE, force_pkg = FALSE)
 
 \item{force_index}{Logical (TRUE or FALSE) - defines whether to force formal
 reference (e.g. [@R-pkg])}
+
+\item{force_pkg}{force citation of package? TRUE|FALSE}
 }
 \value{
 a string in rmarkdown

@@ -12,8 +12,6 @@ Em um novo script do R, crie um vetor de valores aleatórios da distribuição N
 Solution
 ================
 
-A solução é dada pelo código abaixo:
-
 ```{r, eval=FALSE}
 require(ggplot2)
 

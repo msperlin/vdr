@@ -159,13 +159,15 @@ format_pkg_citation <- function(pkg,
 #' @param this_fct name of function
 #' @param force_index Logical (TRUE or FALSE) - defines whether to force formal
 #' reference (e.g. [@R-pkg])
+#' @param force_pkg force citation of package? TRUE|FALSE
 #'
 #' @return a string in rmarkdown
 #' @export
 #'
 #' @examples
 #' format_fct_ref("dplyr", "group_by")
-format_fct_ref <- function(pkg, this_fct,
+format_fct_ref <- function(pkg,
+                           this_fct,
                            force_index = TRUE,
                            force_pkg = FALSE) {
 

@@ -1,0 +1,120 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Considere o gráfico criado de barras criado com o código abaixo:
+Pacote `hrbrthemes` oferece uma grande variedade de temas adicionais a serem utilizados em um gráfico do `ggplot2`. Todas funções de tema possum um padrão bem distinto, onde inicial o nome com o texto `theme_`. Baseado nesta informação e também no uso da função `ls`, podemos descobrir o nome de todas as funções de tema do `hrbrthemes` com o código abaixo:
+
+```{r, echo=TRUE, eval=FALSE}
+library(ggplot2)
+
+df_yf <- yfR::yf_collection_get("IBOV", 
+                                "2020-01-01") 
+
+df_tab <- df_yf |>
+  dplyr::group_by(ticker) |>
+  dplyr::summarise(total_ret = dplyr::last(cumret_adjusted_prices) - 1) |>
+  dplyr::arrange(total_ret)
+
+n_selected <- 10
+selected <- dplyr::bind_rows(
+  head(df_tab, n_selected),
+  tail(df_tab, n_selected)
+)
+
+p <- ggplot(selected, aes(x = reorder(ticker, total_ret),
+                          y = total_ret,
+                          fill = total_ret)) +
+  geom_col(color = "white") + 
+  theme_minimal() +
+  coord_flip() + 
+  labs(title = stringr::str_glue("As {n_selected} piores e melhores ações"),
+       y = "Retorno Total",
+       x = "Ticker")
+
+p
+```
+
+Com base no código anterior, use as ferramentas de programação do R para, de forma automática, aplicar todas as possíveis combinações entre os temas:
+    - ggplot2::theme_light
+    - hrbrthemes::theme_modern_rc
+    - ggtech::theme_airbnb_fancy()
+
+e as paletas do `colorspace`
+    - Blue-Red
+    - Red-Green
+    - Green-Brown
+    - Tropic
+
+Adicionalmente:
+
+1. agrege todos os gráfico em um único arquivo com função `cowplot::plot_grid` 
+1. salve a figura resultante como `themes-and-palettes-demo.png`, pasta documentos (atalho com `~`). Defina o tamanho da figura como height = 30cm e width = 60cm. DICA: Caso a figura gravada sair com fundo transparente, abra-a em um navegador da web, tal como o Chrome ou firefox.
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+library(ggplot2)
+
+plot_fct <- function(theme_str, palette, p) {
+  
+    this_theme <- eval(parse(text = theme_str))
+    
+    p <- p + 
+      this_theme() +
+      labs(
+        subtitle = stringr::str_glue(
+        "{theme_str} | {palette}"
+        ),
+        title = "Demonstração") +
+      colorspace::scale_fill_binned_diverging(palette)
+    
+    return(p)
+}
+
+
+theme_fcts <- c(
+  "ggplot2::theme_light",
+  "hrbrthemes::theme_ipsum_es",
+  "ggtech::theme_airbnb_fancy"
+  )
+
+palettes <- c(
+  "Blue-Red",
+  "Red-Green",
+  "Green-Brown",
+  "Tropic"
+)
+
+df_grid <- tidyr::expand_grid(
+  theme_fcts,
+  palettes
+)
+
+l_args <- list(
+  theme_str = df_grid$theme_fcts, 
+  palette = df_grid$palettes
+)
+
+l_p <- purrr::pmap(.l = l_args, .f = plot_fct, p = p)
+
+p_grid <- cowplot::plot_grid(plotlist = l_p)
+
+ggsave("~/themes-and-palettes-demo.png", p_grid, height = 40, width = 60, units = "cm")
+```
+
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "programming"
+exshuffle: TRUE
+

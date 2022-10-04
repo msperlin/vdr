@@ -23,7 +23,7 @@ Imports:
   knitr,
   remotes,
   exams,
-  glue,
+  stringr,
   webexercises
 Remotes:
   msperlin/yfR,
@@ -32,7 +32,6 @@ Remotes:
 Suggests: 
     testthat (>= 3.0.0),
     ggplot2,
-    stringr,
     tibble,
     tidyr,
     dplyr,

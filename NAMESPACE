@@ -2,7 +2,6 @@
 
 export(book_strings_get)
 export(bookfiles_get)
-export(build_answers_text)
 export(colorize)
 export(data_import)
 export(data_list)
