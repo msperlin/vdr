@@ -6,10 +6,7 @@
 Question
 ========
 
-Para o gráfico anterior, adicione os sequintes elementos textuais:
-
-- título, subtítulo e _caption_;
-- texto nos eixos _x_ e _y_;
+Para o gráfico anterior, use as funções do pacote `colorspace` para implementar a paleta de cores "Harmonic" do canal `color` (dados qualitativos).
 
 
 Solution
@@ -22,16 +19,22 @@ N <- 100
 vec <- rnorm(N)
 df <- dplyr::tibble(
   y = vec,
-  x = 1:N
+  x = 1:N,
+  type = sample(c("A", "B"), size = N, replace = TRUE)
   )
 
-p <- ggplot(df, aes(x = x, y = y)) + 
-  geom_point() + 
+p <- ggplot(df, aes(x = x, y = y, 
+                    color = type, 
+                    label = type)) + 
+  #geom_point(aes(size = x)) + 
   labs(title = "TÍTULO",
        subtitle = "SUBTÍTULO",
        caption = "CAPTION",
        x = "texto X",
-       y = "texto Y")
+       y = "texto Y") + 
+  geom_line() + 
+  geom_text() + 
+  colorspace::scale_colour_discrete_qualitative("Harmonic")
 
 p
 ```
@@ -40,6 +43,6 @@ Meta-information
 ================
 extype: string
 exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
-exname: "ggplot 2"
+exname: "ggplot 08"
 exshuffle: TRUE
 

@@ -6,19 +6,19 @@
 Question
 ========
 
-Utilizando função geobr::read_state()`, baixe os dados de todos os estados do Brasil e, em um mapa do país, mostre os limites de cada estado na cor vermelha. 
+Utilizando função `geobr::read_indigenous_land`, baixe os dados do território indígena no Brasil e adicione esta camada ao gráfico do Brasil criado anteriormente, com as fronteiras da área indígena representadas na cor vermelha. 
 
 
 Solution
 ================
 
 ```{r solution, eval=FALSE}
-df_states <- geobr::read_state(code_state = "all")
+df_sf <- geobr::read_indigenous_land()
 br <- geobr::read_country()
 
 p <- ggplot() + 
   geom_sf(data = br) +
-  geom_sf(data = df_states, color = 'red')
+  geom_sf(data = df_sf, color = 'red')
 
 p
 ```

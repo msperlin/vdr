@@ -9,7 +9,12 @@ Question
 [Statspanda](https://www.instagram.com/statspanda/?hl=en) é outro grupo especializado em produção de conteúdo relacionado a visualização de dados, porém com assuntos muito mais abrangentes que o LatinoMetrics. Em 17/09/2022, o grupo publicou a seguinte figura no [Instagram](https://www.instagram.com/p/CaFZoVpO3gc/?hl=en):
 
 ```{r, echo=FALSE, results = "asis"}
-cat("![Postagem do Statspanda em 19/09/2022](00b-text-resources/figs/exercises-statspanda-instagram_01.png)")
+f_img <- "exercises-statspanda-instagram_01.png"
+
+vdr::exercises_print_img(
+  f_img,
+  "Postagem do Statspanda em 19/09/2022"
+  )
 ```
 
 Neste caso, quais foram os elementos **gráficos** utilizados pelo autor e como os mesmos se associam a mensagem da figura.
@@ -22,17 +27,19 @@ Os elementos textuais são:
 
 * título e subtítulo com a mensagem do gráfico;
 
-* texto nos eixos verticais e horizontais;
+* textos nos eixos verticais e horizontais;
 
-* o número de mortes acima de cada barra do gráfico;
+* o número de mortes acima de cada barra do gráfico, sendo usando uma escala padronizada de milhões (1m);
 
 Os elementos gráficos são:
 
 * uso de barras verticais para indicar a mortalidade das diferentes doenças;
 
-* uso de logos das doenças em cada barra;
+* uso de logos para as doenças de maior mortalidade;
 
 * uso de cores sugestivas, com cor preta para a doença mais mortífera;
+
+* Realçe do caso da COVID, com cor vermelha.
 
 
 Meta-information

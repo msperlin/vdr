@@ -1,0 +1,47 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Para o gráfico anterior, adicione os sequintes elementos textuais e gráficos:
+
+- título, subtítulo;
+- _caption_ com a data e tempo de compilação do gráfico;
+- texto nos eixos _x_ e _y_;
+- tema `theme_light`
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+require(ggplot2)
+
+N <- 100
+vec <- rnorm(N)
+df <- dplyr::tibble(
+  y = vec,
+  x = 1:N
+  )
+
+p <- ggplot(df, aes(x = x, y = y)) + 
+  geom_point() + 
+  labs(title = "TÍTULO",
+       subtitle = "SUBTÍTULO",
+       caption = stringr::str_glue("Compilado em {Sys.time()}"),
+       x = "texto X",
+       y = "texto Y") + 
+  theme_light()
+
+p
+```
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "ggplot 2"
+exshuffle: TRUE
+

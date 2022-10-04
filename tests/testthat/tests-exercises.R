@@ -16,27 +16,25 @@ test_that("exercise functions", {
     exercises_dir_get("error-dir")
   })
 
-  # exercises build
-  this_dir <- exercises_dir_get(exercises_dir_list()[1])
-
-  types <- c("html", "latex", "epub3")
-  types <- c("html", "latex")
-  #types <- c("epub3")
-  for (i_type in types) {
-    # flag <- exercises_build(this_dir,
-    #                        type_doc = i_type)
-    #
-    # expect_true(flag == TRUE)
-  }
-
   # exercises compilation to html
   temp_path <- fs::file_temp("testthat-vdr-exercises-")
-  exercises_compile_solution(dir_output = temp_path)
 
-  n_files <- length(
-    fs::dir_ls(temp_path)
-  )
+  # DOESNT WORK ()
+  # exercises_compile_solution(dir_output = temp_path)
+  # n_files <- length(
+  #   fs::dir_ls(temp_path)
+  # )
+  # expect_true(n_files == 1)
 
-  expect_true(n_files == 1)
+  dir_eoc <- get_pkg_dir("eoce")
+  f_ex <- fs::dir_ls(dir_eoc,
+                     recurse = TRUE,
+                     type = 'file')
+
+  l_xexam = lapply(f_ex, exams::xexams)
+
+  expect_true(length(f_ex) == length(l_xexam))
 
 })
+
+

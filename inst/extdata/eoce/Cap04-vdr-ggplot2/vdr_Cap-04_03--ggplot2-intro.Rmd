@@ -6,8 +6,9 @@
 Question
 ========
 
-Agora, use o gráfico anterior, mas modifique o formato dos pontos, argumento `shape` de acordo com coluna `type`. 
-Também aumente o tamanho de todos os pontos do gráfico para 3. 
+Para o mesmo gráfico anterior, adicione uma nova coluna chamada `type` no dataframe, a qual pode tomar o valor "A" ou "B". Para isto, podes usar o comando `sample(c("A", "B"), size = N, replace = TRUE)`. Note que o valor de N foi definido anteriormente.
+
+Com base no novo dataframe, crie um gráfico de linhas com cores diferentes para cada valor em `type`.
 
 
 Solution
@@ -24,16 +25,14 @@ df <- dplyr::tibble(
   type = sample(c("A", "B"), size = N, replace = TRUE)
   )
 
-p <- ggplot(df, aes(x = x, y = y, 
-                    color = type, 
-                    shape = type)) + 
-  geom_point(size = 3) + 
+p <- ggplot(df, aes(x = x, y = y, color = type)) + 
+  geom_point() + 
   labs(title = "TÍTULO",
        subtitle = "SUBTÍTULO",
        caption = "CAPTION",
        x = "texto X",
        y = "texto Y") + 
-  geom_line()
+  theme_light()
 
 p
 ```

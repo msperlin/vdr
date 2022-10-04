@@ -7,7 +7,7 @@
 exercises_compile_solution(dir_output = "~/vdr-solutions")
 }
 \arguments{
-\item{dir_output}{}
+\item{dir_output}{directory where to copy html file (e.g. '~/Desktop')}
 }
 \value{
 nothing..

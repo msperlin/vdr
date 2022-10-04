@@ -6,7 +6,7 @@
 Question
 ========
 
-O grupo [LatinoMetrics](https://latinometrics.substack.com/) produz e distribui um conteúdo muito interessante de visualização de dados econômicos para a América Latina. Observando o material do [Instagram](https://www.instagram.com/latinometrics/), visualize as seis últimas imagens disponibilizadas na página principal. Nestas seis, destaque os elementos estruturais utilizados por todas as figuras, isto é, quais elementos foram repetidos entre uma figura e outra.
+O grupo [LatinoMetrics](https://latinometrics.substack.com/) produz e distribui um conteúdo muito interessante de visualização de dados econômicos para a América Latina. Observando o material do [Instagram](https://www.instagram.com/latinometrics/), visualize as seis últimas imagens disponibilizadas na página principal. Observando as figuras como um todo, destaque os elementos estruturais utilizados na criação das imagens. Isto, é, destaque os elementos visuais que foram repetidos entre uma figura e outra.
 
 
 Solution
@@ -16,20 +16,25 @@ Em um acesso do dia 27/09/2022, observa-se as seis últimas publicações da pá
 
 
 ```{r, echo=FALSE, results = "asis"}
-cat("![Seis últimas publicações do LatinoMetrics em 27/09/2022](00b-text-resources/figs/exercises-latinometrics-instagram_01-SOLUTION-20220927.png)")
+f_img <- "exercises-latinometrics-instagram_01-SOLUTION-20220927.png"
+
+vdr::exercises_print_img(
+  f_img,
+  "Seis últimas publicações do LatinoMetrics em 27/09/2022"
+  )
 ```
 
 Nota-se os seguintes elementos repetidos entre uma figura e outra:
 
 * Todos gráficos possuem a mesma cor de fundo, e logo do LatinoMetrics em algum lugar.
 
-* A paleta de cores dos interior do gráfico tende a ser relacionada ao tema. Veja, por exemplo, que o primeiro gráfico -- "A Mexican Abuelita has One of the Hottest coking Channels" -- usa o vermelho e azul para distinguir canais individuais dos corporativos.
+* A paleta de cores dos interior do gráfico tende a ser relacionada ao tema. Veja, por exemplo, que o primeiro gráfico -- "A Mexican Abuelita has One of the Hottest coking Channels" -- usa o vermelho e azul para distinguir canais individuais e corporativos do Youtube.
 
 * A origem dos dados é sempre definida no _caption_, texto abaixo e esquerda do gráfico.
 
 * Todas legendas sempre ficam abaixo do título ou no interior do gráfico.
 
-* Uso expressivo de símbolos e logos, sempre que possível. Por exemplo, o logo de empresas é utilizado ostensivamente.
+* Sempre que possível, observa-se o uso expressivo de símbolos e logos. Por exemplo, o logo de empresas é utilizado ostensivamente ao longo de diferentes figuras.
 
 
 

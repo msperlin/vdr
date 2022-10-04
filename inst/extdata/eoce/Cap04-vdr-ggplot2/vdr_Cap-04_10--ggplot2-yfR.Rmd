@@ -1,0 +1,73 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Com base na função `yfR::yf_collection_get`, baixe os dados de preços de ações para a composição atual do índice Ibovespa, com início a cinco anos atrás e término como sendo a data atual. Com base nos dados importados, siga os seguintes passos:
+
+1. filtre os dados para manter apenas as 5 ações com maior rentabilidade acumulado na período, e as 5 com menor.
+1. construa uma figura com os retornos acumulados das 10 ações selecionadas anteriormente, onde o eixo horizontal representa as datas.
+1. Implemente as seguintes modificações no gráfico:
+    - Adicione título, subtítulo e caption e também o texto dos eixo horizontal e vertical;
+    - modifique a escala do eixo horizontal para percentagens com comando `scale_y_continuous(labels = scales::percent)`;
+    - use o tema `theme_light`;
+1. exporte a figura resultante para um arquivo de tamanha tamanho 10 cm (height) X 15 cm (width) chamado "fig-ibov-10-ações.png", e localizado na pasta padrão "Documentos" (atalho com `~`);
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+library(ggplot2)
+
+df_ibov <- yfR::yf_collection_get("IBOV",
+                                  first_date = Sys.Date() - 5*365)
+
+# passo 01
+df_tab <- df_ibov |>
+  dplyr::group_by(ticker ) |>
+  dplyr::summarize(final_ret = dplyr::last(cumret_adjusted_prices)) |>
+  dplyr::arrange(final_ret)
+
+n_selected <- 5
+selected <- dplyr::bind_rows(
+  head(df_tab, n_selected),
+  tail(df_tab, n_selected)
+)
+
+df_ibov <- df_ibov |>
+  dplyr::filter(ticker %in% selected$ticker)
+
+p <- ggplot(df_ibov, aes(x = ref_date, y = cumret_adjusted_prices, 
+                         color = ticker)) + 
+  # passo 02
+  geom_line() +
+  # passo 03
+  labs(title = "Retornos acumulados para 10 ações do Ibovespa",
+       subtitle = stringr::str_glue("Dados entre {min(df_ibov$ref_date)} e {max(df_ibov$ref_date)}"),
+       caption = stringr::str_glue("Compilado em {Sys.time()}"),
+       x = "Dias",
+       y = "Retorno Acumulado") +
+  scale_y_continuous(labels = scales::percent) + 
+  theme_light()
+
+p
+
+# passo 04
+f_png <- "~/fig-ibov-10-ações.png"
+ggsave(filename = f_png, plot = p,
+       height = 10, width = 15, units = "cm")
+
+fs::file_exists(f_png)
+```
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "ggplot 09"
+exshuffle: TRUE
+

@@ -6,7 +6,7 @@
 Question
 ========
 
-Para o mesmo gráfico anterior, adicione uma camada de linhas no gráfico
+Neste exercício, remova a camada de pontos utilizada no gráfico e adicione o texto disponível na coluna `type` (A ou B) no mesmo local onde os pontos se situavam.
 
 
 Solution
@@ -23,14 +23,17 @@ df <- dplyr::tibble(
   type = sample(c("A", "B"), size = N, replace = TRUE)
   )
 
-p <- ggplot(df, aes(x = x, y = y, color = type)) + 
-  geom_point() + 
+p <- ggplot(df, aes(x = x, y = y, 
+                    color = type, 
+                    label = type)) + 
+  #geom_point(aes(size = x)) + 
   labs(title = "TÍTULO",
        subtitle = "SUBTÍTULO",
        caption = "CAPTION",
        x = "texto X",
        y = "texto Y") + 
-  geom_line()
+  geom_line() + 
+  geom_text()
 
 p
 ```
@@ -39,6 +42,6 @@ Meta-information
 ================
 extype: string
 exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
-exname: "ggplot 03"
+exname: "ggplot 07"
 exshuffle: TRUE
 

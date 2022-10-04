@@ -5,7 +5,7 @@
 Question
 ========
 
-Pacote `microdatasus`, criado por Raphael Saldanha ([rfsaldanha](https://github.com/rfsaldanha)), importado e limpa dados do sistema de saúde único (SUS). Após a instalação do pacote (veja instruções no [Github](https://github.com/rfsaldanha/microdatasus)), baixe os dados de mortalidade do estado do Rio Grande do Sul utilizando o seguinte código:
+Pacote `microdatasus`, criado por Raphael Saldanha ([rfsaldanha](https://github.com/rfsaldanha)), importa e limpa dados do Sistema de Saúde Único (SUS). Após a instalação do pacote (veja instruções no [Github](https://github.com/rfsaldanha/microdatasus)), baixe os dados de mortalidade do estado do Rio Grande do Sul utilizando o seguinte código:
 
 ```{r, eval=FALSE}
 library(microdatasus) 

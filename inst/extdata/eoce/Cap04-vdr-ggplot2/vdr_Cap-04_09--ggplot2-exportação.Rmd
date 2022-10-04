@@ -1,0 +1,56 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Exporte a figura anterior com as seguintes informações:
+
+1. arquivo de exportação chamado "fig-eoc-vdr.png" e localizado na pasta padrão "Documentos" (atalho com `~`);
+1. use um tamanho 10 X 10 em centímetros
+
+Verifique se o arquivo foi criado corretamente na pasta desejada.
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+require(ggplot2)
+
+N <- 100
+vec <- rnorm(N)
+df <- dplyr::tibble(
+  y = vec,
+  x = 1:N,
+  type = sample(c("A", "B"), size = N, replace = TRUE)
+  )
+
+p <- ggplot(df, aes(x = x, y = y, 
+                    color = type, 
+                    label = type)) + 
+  #geom_point(aes(size = x)) + 
+  labs(title = "TÍTULO",
+       subtitle = "SUBTÍTULO",
+       caption = "CAPTION",
+       x = "texto X",
+       y = "texto Y") + 
+  geom_line() + 
+  geom_text() + 
+  colorspace::scale_colour_discrete_qualitative("Harmonic")
+
+f_png <- "~/fig-eoc-vdr.png"
+ggsave(filename = f_png, plot = p,
+       height = 10, width = 10, units = "cm")
+
+fs::file_exists(f_png)
+```
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "ggplot 09"
+exshuffle: TRUE
+

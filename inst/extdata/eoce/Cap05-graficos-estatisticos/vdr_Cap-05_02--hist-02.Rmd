@@ -6,7 +6,7 @@
 Question
 ========
 
-Utilizando o pacote `yfR` e argumento `freq_data = 'monthly'` em `yf_get`, baixe os dados dos preços **mensais** da Petrobras, ticker = _PETR3.SA_, desde 2015 até o dia atual. Com base nos dados importados, crie um histograma dos retornos mensais  da ação, adicionando os seguintes itens ao gráfico:
+Utilizando o pacote `yfR` e argumento `freq_data = 'monthly'` em `yf_get`, baixe os dados dos preços **mensais** da Petrobras, ticker = _PETR3.SA_, de 2015 até o dia atual. Com base nos dados importados, crie um histograma dos retornos mensais  da ação, adicionando os seguintes itens ao gráfico:
 
 - título e subtítulo;
 - texto no eixo x e y;

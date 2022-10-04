@@ -5,9 +5,7 @@
 Question
 ========
 
-Considerando novamente os dados de mortalidade do SUS, crie um gráfico de densidade de distribuição, porém separe as linhas do gráfico de acordo com o gênero (Masculino/Feminino). Isto é, queremos uma linha de densidade para o sexo masculino, e outra para o feminino.
-
-Dica: remova os casos de SEXO = NA antes de criar o gráfico.
+Considerando novamente os dados de mortalidade do SUS, crie um gráfico de densidade de distribuição, porém separe as linhas do gráfico de acordo com o gênero (Masculino/Feminino). Isto é, queremos uma linha de densidade para o sexo masculino, e outra para o feminino. Dica: remova os casos de SEXO = NA (_Not Available_) antes de criar o gráfico.
 
 Solution
 ================

@@ -1,0 +1,46 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Agora, use o gráfico anterior, mas modifique o formato dos pontos, definindo que o argumento `shape` será mapeado de acordo com coluna `type`. Também aumente o tamanho de todos os pontos do gráfico para 3. 
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+require(ggplot2)
+
+N <- 100
+vec <- rnorm(N)
+df <- dplyr::tibble(
+  y = vec,
+  x = 1:N,
+  type = sample(c("A", "B"), size = N, replace = TRUE)
+  )
+
+p <- ggplot(df, aes(x = x, y = y, 
+                    color = type, 
+                    shape = type)) + 
+  geom_point(size = 3) + 
+  labs(title = "TÍTULO",
+       subtitle = "SUBTÍTULO",
+       caption = "CAPTION",
+       x = "texto X",
+       y = "texto Y") + 
+  theme_light() + 
+  geom_line()
+
+p
+```
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "ggplot 05"
+exshuffle: TRUE
+
