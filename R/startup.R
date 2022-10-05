@@ -5,23 +5,29 @@
   this_pkg <- 'vdr'
 
   data_files <- list.files(
-    system.file('extdata/data', package = 'vdr')
+    get_pkg_dir("data")
   )
+
   script_files <- list.files(
-    system.file('extdata/book-scripts', package = 'vdr')
+    get_pkg_dir("book-scripts")
+  )
+
+  exercise_files <- list.files(
+    get_pkg_dir("eoce"), recursive = TRUE
   )
 
   if (interactive()) {
-    msg <- paste0('\nPackage vdr sucessfully loaded! ',
-                  'Here youll find:\n\n',
+    msg <- paste0('\nPackage vdr sucessfully loaded!',
+                  ' Here youll find:\n',
                   '\t', length(data_files), ' data files \n',
                   '\t', length(script_files), ' book scripts for building data files \n',
-                  '\n',
+                  '\t', length(exercise_files), ' end of chapter exercises',
+                  '\n\n',
                   "Useful links:\n",
-                  "Author site: ", cli::style_hyperlink(my_links$blog_site,
+                  "\tAuthor site: ", cli::style_hyperlink(my_links$blog_site,
                                                        my_links$blog_site),
-                  "\nBook site: ", cli::style_hyperlink(my_links$book_blog_site,my_links$book_blog_site ),
-                  "\nAmazon site: ", cli::style_hyperlink(my_links$book_amazon_ebook,
+                  "\n\tBook site: ", cli::style_hyperlink(my_links$book_blog_site,my_links$book_blog_site ),
+                  "\n\tAmazon site: ", cli::style_hyperlink(my_links$book_amazon_ebook,
                                                           my_links$book_amazon_ebook))
   } else {
     msg <- ''

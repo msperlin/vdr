@@ -154,7 +154,8 @@ exercises_compile_solution <- function(dir_output = "~/vdr-solutions",
                                        run_chunks = TRUE) {
   fs::dir_create(dir_output)
 
-  Sys.setenv(vdr_run_chunks = run_chunks)
+  Sys.setenv(vdr_run_chunks = run_chunks,
+             is_eoc_local = TRUE)
 
   dir_exercises <- exercises_dir_list(TRUE)
 

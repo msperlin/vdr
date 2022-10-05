@@ -43,21 +43,28 @@ get_pkg_dir <- function(sub_dir) {
 #' @export
 #'
 #' @examples
-#' exercises_get_img("exercises-latinometrics-instagram_01-SOLUTION-20220927.png")
+#' exercises_get_img("exercises-reddit-brazil.jpg")
 exercises_get_img <- function(img_file) {
-  # my_file <- fs::path(
-  #   get_pkg_dir("img-exercises"),
+
+   my_file <- fs::path(
+     get_pkg_dir("img-exercises"),
+     img_file
+     )
+
+   if (!fs::file_exists(my_file)) {
+     cli::cli_abort("cant find file {my_file}")
+   }
+
+  # my_url <- fs::path(
+  #   #"00b-text-resources/figs/",
+  #   "https://www.msperlin.com/vdr/00b-text-resources/figs/",
   #   img_file
-  #   )
+  # )
+  #
+  # if (!check_link(my_url)) {
+  #   #cli::cli_abort("link {my_url} not working")
+  # }
 
-  my_file <- fs::path(
-    '00b-text-resources/figs/',
-    img_file
-  )
-
-  if (!fs::file_exists(my_file)) {
-    #cli::cli_abort("Cant find file {my_file}")
-  }
 
   return(my_file)
 }
@@ -80,4 +87,24 @@ exercises_print_img <- function(img_file, this_caption) {
     )
   )
   return(invisible(TRUE))
+}
+
+#' Check if link exists
+#'
+#' @noRd
+check_link <- function(link_in) {
+
+  #cli::cli_alert_info("Checking {link_in}")
+
+  out_get <- list()
+
+  try({
+    out_get <- httr::GET(link_in)
+  })
+
+  status_code <- out_get$status_code
+
+  flag <- status_code == 200
+
+  return(invisible(flag))
 }

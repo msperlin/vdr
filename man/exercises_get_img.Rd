@@ -16,5 +16,5 @@ a path
 Returns local dir of pkg
 }
 \examples{
-exercises_get_img("exercises-latinometrics-instagram_01-SOLUTION-20220927.png")
+exercises_get_img("exercises-reddit-brazil.jpg")
 }
