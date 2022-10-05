@@ -1,23 +1,3 @@
-#' Gets official links from book
-#'
-#' Use this function in the book so that all links are updated in a single location.
-#'
-#' @return A list with links
-#' @export
-#'
-#' @examples
-#'
-#' print(links_get())
-links_get <- function() {
-
-  my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/XXXX',
-               book_site_zip = 'TODO',
-               blog_site = 'https://www.msperlin.com/blog')
-
-  return(my_l)
-
-}
-
 #' Copy all book files to local folder
 #'
 #' This function will grab files from the afedR package and copy all of it to a local folder,
