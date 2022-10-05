@@ -8,6 +8,8 @@ exercises_compile_solution(dir_output = "~/vdr-solutions", run_chunks = TRUE)
 }
 \arguments{
 \item{dir_output}{directory where to copy html file (e.g. '~/Desktop')}
+
+\item{run_chunks}{flag to run code chunks or not. If TRUE, might take a while to process all code.}
 }
 \value{
 nothing..
@@ -18,5 +20,7 @@ a .html file. Aternativelly, all solutiona are available at <www.msperlin.com/vd
 }
 \examples{
 
+\dontrun{
 exercises_compile_solution(dir_output = fs::path_temp())
+}
 }

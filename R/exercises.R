@@ -140,13 +140,16 @@ exercises_dir_list <- function(silent = FALSE) {
 #' a .html file. Aternativelly, all solutiona are available at <www.msperlin.com/vdr>
 #'
 #' @param dir_output directory where to copy html file (e.g. '~/Desktop')
+#' @param run_chunks flag to run code chunks or not. If TRUE, might take a while to process all code.
 #'
 #' @return nothing..
 #' @export
 #'
 #' @examples
 #'
+#' \dontrun{
 #' exercises_compile_solution(dir_output = fs::path_temp())
+#' }
 exercises_compile_solution <- function(dir_output = "~/vdr-solutions",
                                        run_chunks = TRUE) {
   fs::dir_create(dir_output)

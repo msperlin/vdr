@@ -11,8 +11,6 @@ Solution
 ================
 
 ```{r solution}
-library(microdatasus) 
-
 df_sus <- vdr::data_import("Exercises-sus-mortality-data.csv")
 
 p <- ggplot(df_sus , aes(sample = age)) + 

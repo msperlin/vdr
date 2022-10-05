@@ -8,34 +8,30 @@ Question
 
 Considere o gráfico criado de barras criado com o código abaixo:
 
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE}
 library(ggplot2)
 
-df_yf <- yfR::yf_collection_get("IBOV", 
-                                "2020-01-01") 
+tickers <- c("PETR3.SA", "ITSA3.SA",
+             "GRND3.SA", "GGBR3.SA",
+             "EGIE3.SA", "USIM5.SA")
+
+df_yf <- yfR::yf_get(tickers, 
+                     "2020-01-01") 
 
 df_tab <- df_yf |>
   dplyr::group_by(ticker) |>
   dplyr::summarise(total_ret = dplyr::last(cumret_adjusted_prices) - 1) |>
   dplyr::arrange(total_ret)
 
-n_selected <- 10
-selected <- dplyr::bind_rows(
-  head(df_tab, n_selected),
-  tail(df_tab, n_selected)
-)
-
-p <- ggplot(selected, aes(x = reorder(ticker, total_ret),
+p <- ggplot(df_tab, aes(x = reorder(ticker, total_ret),
                           y = total_ret,
                           fill = total_ret)) +
   geom_col(color = "white") + 
   theme_minimal() +
   coord_flip() + 
-  labs(title = stringr::str_glue("As {n_selected} piores e melhores ações"),
+  labs(title = stringr::str_glue("Performance de {length(tickers)} Ações Selecionadas"),
        y = "Retorno Total",
        x = "Ticker")
-
-p
 ```
 
 
@@ -47,7 +43,6 @@ Com base no código anterior, use as ferramentas de programação do R para, de 
 
 e as paletas do `colorspace`
 
-- Blue-Red
 - Red-Green
 - Green-Brown
 - Tropic
@@ -61,7 +56,7 @@ Adicionalmente:
 Solution
 ================
 
-```{r solution, fig.height=10, fig.width=10, warning=FALSE}
+```{r solution, fig.height=12, fig.width=12, warning=FALSE}
 library(ggplot2)
 
 plot_fct <- function(theme_str, palette, p) {
@@ -87,7 +82,6 @@ theme_fcts <- c(
   )
 
 palettes <- c(
-  "Blue-Red",
   "Red-Green",
   "Green-Brown",
   "Tropic"

@@ -1,7 +1,5 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
-vdr_run_chunks <- as.logical(Sys.getenv("vdr_run_chunks"))
-knitr::opts_chunk$set(eval = vdr_run_chunks)
-#check_answers(my_answers)
+
 ```
 
 Question
