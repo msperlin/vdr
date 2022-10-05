@@ -65,7 +65,7 @@ exercise_to_text <- function(f_in, my_counter, type_doc) {
   if (type_doc %in% c('latex', 'epub3')) {
 
     my_str <- stringr::str_glue(
-      '\n\n {sprintf("%02d", my_counter)} - {exercise_text} \n\n '
+      '\n\n --- \n\n {sprintf("%02d", my_counter)} - {exercise_text} \n\n '
     )
 
   } else if (type_doc == 'html') {
@@ -142,7 +142,7 @@ exercises_dir_list <- function(silent = FALSE) {
 #' @param dir_output directory where to copy html file (e.g. '~/Desktop')
 #' @param run_chunks flag to run code chunks or not. If TRUE, might take a while to process all code.
 #'
-#' @return nothing..
+#' @return path to compiled file
 #' @export
 #'
 #' @examples
@@ -178,14 +178,17 @@ exercises_compile_solution <- function(dir_output = "~/vdr-solutions",
                     template = html_template)
 
   # copy files
-  f_out <- stringr::str_glue(
+  f_name <- stringr::str_glue(
     '{format(Sys.time(), "%Y%m%d %H%M%S")}-Solutions-Exercises-VDR.html'
   )
+
+  f_out <- fs::path(dir_output, f_name)
+
 
   cli::cli_alert_info("Copying files")
   fs::file_copy(
     fs::dir_ls(temp_dir),
-    fs::path(dir_output, f_out),
+    f_out,
     overwrite = TRUE
   )
 
@@ -194,6 +197,6 @@ exercises_compile_solution <- function(dir_output = "~/vdr-solutions",
   cli::cli_alert_info("File available at {fs::path_expand(fs::path(dir_output))}")
   cli::cli_alert_info("Search for the file in your file explorer, and open it with your favorite internet browser.")
 
-  return(invisible(TRUE))
+  return(invisible(f_out))
 
 }

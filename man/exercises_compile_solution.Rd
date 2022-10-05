@@ -12,7 +12,7 @@ exercises_compile_solution(dir_output = "~/vdr-solutions", run_chunks = TRUE)
 \item{run_chunks}{flag to run code chunks or not. If TRUE, might take a while to process all code.}
 }
 \value{
-nothing..
+path to compiled file
 }
 \description{
 This function will compile the solution of exercises from the book to

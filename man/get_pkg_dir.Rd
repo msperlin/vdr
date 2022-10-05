@@ -16,5 +16,5 @@ a path
 Returns local dir of pkg
 }
 \examples{
-get_pkg_dir("img-exercises")
+get_pkg_dir("eoce")
 }

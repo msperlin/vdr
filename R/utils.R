@@ -22,7 +22,7 @@ versions_string <- function(n_plots) {
 #' @export
 #'
 #' @examples
-#' get_pkg_dir("img-exercises")
+#' get_pkg_dir("eoce")
 get_pkg_dir <- function(sub_dir) {
   my_dir <- fs::path(
     system.file("extdata", package = "vdr"),
@@ -45,12 +45,18 @@ get_pkg_dir <- function(sub_dir) {
 #' @examples
 #' exercises_get_img("exercises-latinometrics-instagram_01-SOLUTION-20220927.png")
 exercises_get_img <- function(img_file) {
+  # my_file <- fs::path(
+  #   get_pkg_dir("img-exercises"),
+  #   img_file
+  #   )
+
   my_file <- fs::path(
-    get_pkg_dir("img-exercises"),
-    img_file)
+    '00b-text-resources/figs/',
+    img_file
+  )
 
   if (!fs::file_exists(my_file)) {
-    cli::cli_abort("Cant find file {my_file}")
+    #cli::cli_abort("Cant find file {my_file}")
   }
 
   return(my_file)
