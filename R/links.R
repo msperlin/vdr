@@ -19,7 +19,7 @@ links_get <- function() {
                book_github_source = 'TBD',
                blog_site = 'https://www.msperlin.com/blog',
                adfer_web = "https://www.msperlin.com/adfeR",
-               exercises_solutions = "TBD")
+               exercises_solutions = "https://www.msperlin.com/vdr")
 
   return(my_l)
 

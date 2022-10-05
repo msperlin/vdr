@@ -12,7 +12,7 @@ Em um novo script do R, crie um vetor de valores aleatórios da distribuição N
 Solution
 ================
 
-```{r, eval=FALSE}
+```{r solution, eval=TRUE}
 require(ggplot2)
 
 N <- 100

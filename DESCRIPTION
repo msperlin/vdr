@@ -23,8 +23,7 @@ Imports:
   knitr,
   remotes,
   exams,
-  stringr,
-  webexercises
+  stringr
 Remotes:
   msperlin/yfR,
   clauswilke/dviz.supp,
