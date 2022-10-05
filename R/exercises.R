@@ -188,7 +188,7 @@ exercises_compile_solution <- function(dir_output = "~/vdr-solutions",
 
   cli::cli_alert_success("Sucess!")
 
-  cli::cli_alert_info("File available at{fs::path_expand(fs::path(dir_output, f_out))}")
+  cli::cli_alert_info("File available at {fs::path_expand(fs::path(dir_output))}")
   cli::cli_alert_info("Search for the file in your file explorer, and open it with your favorite internet browser.")
 
   return(invisible(TRUE))
