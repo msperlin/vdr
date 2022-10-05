@@ -25,7 +25,6 @@ Imports:
   exams,
   stringr
 Remotes:
-  msperlin/yfR,
   clauswilke/dviz.supp,
   clauswilke/colorblindr
 Suggests: 
@@ -36,5 +35,8 @@ Suggests:
     dplyr,
     httr,
     purrr,
-    yfR
+    yfR,
+    cowplot,
+    hrbrthemes,
+    geobr
 Config/testthat/edition: 3
