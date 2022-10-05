@@ -147,8 +147,11 @@ exercises_dir_list <- function(silent = FALSE) {
 #' @examples
 #'
 #' exercises_compile_solution(dir_output = fs::path_temp())
-exercises_compile_solution <- function(dir_output = "~/vdr-solutions") {
+exercises_compile_solution <- function(dir_output = "~/vdr-solutions",
+                                       run_chunks = TRUE) {
   fs::dir_create(dir_output)
+
+  Sys.setenv(vdr_run_chunks = run_chunks)
 
   dir_exercises <- exercises_dir_list(TRUE)
 

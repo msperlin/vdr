@@ -10,16 +10,8 @@ Repita o exercício anterior, porém use facetas para mostrar as diferentes dens
 Solution
 ================
 
-```{r solution, eval=FALSE}
-library(microdatasus) 
-
-df_sus <- fetch_datasus(year_start = 2019, 
-                        year_end = 2020, 
-                        uf = "RS", 
-                        information_system = "SIM-DO") |>
-  process_sim() |>
-  dplyr::mutate(age = as.numeric(IDADEanos)) |>
-  dplyr::filter(!is.na(SEXO))
+```{r solution}
+df_sus <- vdr::data_import("Exercises-sus-mortality-data.csv")
 
 p <- ggplot(df_sus , aes(x = age)) + 
   geom_density() + 

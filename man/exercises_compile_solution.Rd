@@ -4,7 +4,7 @@
 \alias{exercises_compile_solution}
 \title{Compiles solution of exercises}
 \usage{
-exercises_compile_solution(dir_output = "~/vdr-solutions")
+exercises_compile_solution(dir_output = "~/vdr-solutions", run_chunks = TRUE)
 }
 \arguments{
 \item{dir_output}{directory where to copy html file (e.g. '~/Desktop')}

@@ -12,7 +12,7 @@ Utilizando função `geobr::read_country`, baixe os dados do território do Bras
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution}
 br <- geobr::read_country()
 
 p <- ggplot() + 

@@ -12,7 +12,7 @@ Utilizando função `geobr::read_indigenous_land`, baixe os dados do território
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution}
 df_sf <- geobr::read_indigenous_land()
 br <- geobr::read_country()
 

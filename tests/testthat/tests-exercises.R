@@ -17,9 +17,9 @@ test_that("exercise functions", {
   })
 
   # exercises compilation to html
-  temp_path <- fs::file_temp("testthat-vdr-exercises-")
-
   # DOESNT WORK: "match.call(definition = sys.function(i), call = sys.call(i))`: invalid 'definition' argument"
+  #temp_path <- fs::file_temp("testthat-vdr-exercises-")
+
   # exercises_compile_solution(dir_output = temp_path)
   # n_files <- length(
   #   fs::dir_ls(temp_path)

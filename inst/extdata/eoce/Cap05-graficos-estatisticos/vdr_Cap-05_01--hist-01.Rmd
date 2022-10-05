@@ -12,7 +12,7 @@ Utilizando o pacote `yfR`, baixe os dados dos preços da Grendene, ticker = _GRN
 Solution
 ================
 
-```{r solution, eval=FALSE, echo = TRUE}
+```{r solution}
 library(ggplot2)
 
 ticker <- "GRND3.SA"

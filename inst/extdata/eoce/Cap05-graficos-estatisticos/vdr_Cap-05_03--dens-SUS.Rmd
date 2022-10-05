@@ -1,22 +1,17 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
+f_data <- "Exercises-sus-mortality-data.csv"
+
+av_data <- vdr::data_list(be_silent = TRUE)
+if (!f_data %in% av_data) {
+  cli::cli_abort("cant find {f_data}")
+}
 
 ```
 
 Question
 ========
 
-Pacote `microdatasus`, criado por Raphael Saldanha ([rfsaldanha](https://github.com/rfsaldanha)), importa e limpa dados do Sistema de Saúde Único (SUS). Após a instalação do pacote (veja instruções no [Github](https://github.com/rfsaldanha/microdatasus)), baixe os dados de mortalidade do estado do Rio Grande do Sul utilizando o seguinte código:
-
-```{r, eval=FALSE, echo=TRUE}
-library(microdatasus) 
-
-df_sus <- fetch_datasus(year_start = 2019, 
-                        year_end = 2020, 
-                        uf = "RS", 
-                        information_system = "SIM-DO") |>
-  process_sim() |>
-  dplyr::mutate(age = as.numeric(IDADEanos))
-```
+Pacote `microdatasus`, criado por Raphael Saldanha ([rfsaldanha](https://github.com/rfsaldanha)), importa e limpa dados do Sistema de Saúde Único (SUS). No pacote do livro é possível encontrar dados de mortalidade importados pelo `microdatasus` e filtrados para manter apenas algumas colunas da base completa. O arquivo é chamado `r f_data` e pode ser importado com a função `vdr::data_import`.
 
 Com base nos dados da coluna `age`, crie um gráfico de **densidade** para a distribuição de idades de falecimento, incluindo os seguintes itens no gráfico:
 
@@ -28,15 +23,8 @@ Com base nos dados da coluna `age`, crie um gráfico de **densidade** para a dis
 Solution
 ================
 
-```{r solution, eval=FALSE, echo = TRUE}
-library(microdatasus) 
-
-df_sus <- fetch_datasus(year_start = 2019, 
-                        year_end = 2020, 
-                        uf = "RS", 
-                        information_system = "SIM-DO") |>
-  process_sim() |>
-  dplyr::mutate(age = as.numeric(IDADEanos))
+```{r solution}
+df_sus <- vdr::data_import("Exercises-sus-mortality-data.csv")
 
 p <- ggplot(df_sus , aes(x = age)) + 
   geom_density() + 

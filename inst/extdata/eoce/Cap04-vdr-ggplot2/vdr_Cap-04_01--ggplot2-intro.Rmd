@@ -1,6 +1,6 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
-
-#check_answers(my_answers)
+vdr_run_chunks <- as.logical(Sys.getenv("vdr_run_chunks"))
+knitr::opts_chunk$set(eval = vdr_run_chunks)
 ```
 
 Question
@@ -12,7 +12,7 @@ Em um novo script do R, crie um vetor de valores aleatórios da distribuição N
 Solution
 ================
 
-```{r solution, eval=TRUE}
+```{r solution}
 require(ggplot2)
 
 N <- 100

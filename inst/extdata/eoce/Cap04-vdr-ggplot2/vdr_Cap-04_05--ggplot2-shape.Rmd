@@ -1,6 +1,6 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
-
-#check_answers(my_answers)
+vdr_run_chunks <- as.logical(Sys.getenv("vdr_run_chunks"))
+knitr::opts_chunk$set(eval = vdr_run_chunks)
 ```
 
 Question
@@ -11,7 +11,7 @@ Agora, use o gráfico anterior, mas modifique o formato dos pontos, definindo qu
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution}
 require(ggplot2)
 
 N <- 100

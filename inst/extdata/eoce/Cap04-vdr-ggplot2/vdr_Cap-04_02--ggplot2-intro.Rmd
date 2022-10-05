@@ -1,5 +1,6 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
-
+vdr_run_chunks <- as.logical(Sys.getenv("vdr_run_chunks"))
+knitr::opts_chunk$set(eval = vdr_run_chunks)
 #check_answers(my_answers)
 ```
 
@@ -16,7 +17,7 @@ Para o gráfico anterior, adicione os sequintes elementos textuais e gráficos:
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution}
 require(ggplot2)
 
 N <- 100

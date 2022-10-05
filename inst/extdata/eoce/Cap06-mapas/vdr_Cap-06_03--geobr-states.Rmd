@@ -12,7 +12,7 @@ Utilizando função geobr::read_state()`, baixe os dados de todos os estados do 
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution}
 df_states <- geobr::read_state(code_state = "all")
 br <- geobr::read_country()
 

@@ -1,6 +1,6 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
-
-#check_answers(my_answers)
+vdr_run_chunks <- as.logical(Sys.getenv("vdr_run_chunks"))
+knitr::opts_chunk$set(eval = vdr_run_chunks)
 ```
 
 Question
@@ -12,7 +12,7 @@ Para o mesmo gráfico anterior, adicione uma camada de linhas no gráfico.
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution}
 require(ggplot2)
 
 N <- 100

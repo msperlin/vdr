@@ -22,7 +22,7 @@ Utilizando função `geobr::read_state()`, baixe os dados do estado do Rio Grand
 Solution
 ================
 
-```{r solution, eval=FALSE}
+```{r solution}
 df_rs <- geobr::read_state(code_state = "RS")
 
 f_cities <- "Chapter07-latlong-cities-brazil.csv"
