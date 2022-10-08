@@ -46,14 +46,26 @@ get_pkg_dir <- function(sub_dir) {
 #' exercises_get_img("exercises-reddit-brazil.jpg")
 exercises_get_img <- function(img_file) {
 
-   my_file <- fs::path(
-     get_pkg_dir("img-exercises"),
-     img_file
-     )
+  vdr_eoc_html <- Sys.getenv("vdr_eoc_html")
 
-   if (!fs::file_exists(my_file)) {
-     cli::cli_abort("cant find file {my_file}")
-   }
+  if (vdr_eoc_html == "") { # local compilation
+
+    this_path <- fs::path(
+      get_pkg_dir("img-exercises"),
+      img_file
+    )
+
+    if (!fs::file_exists(this_path)) {
+      cli::cli_abort("cant find file {this_path}")
+    }
+
+  } else {
+    this_path <- fs::path(
+      "00b-text-resources/figs/",
+      img_file
+    )
+
+  }
 
   # my_url <- fs::path(
   #   #"00b-text-resources/figs/",
@@ -66,7 +78,7 @@ exercises_get_img <- function(img_file) {
   # }
 
 
-  return(my_file)
+  return(this_path)
 }
 
 #' Prints imgs in exercises
