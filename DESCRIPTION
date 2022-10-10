@@ -26,7 +26,8 @@ Imports:
   stringr
 Remotes:
   clauswilke/dviz.supp,
-  clauswilke/colorblindr
+  clauswilke/colorblindr,
+  ricardo-bion/ggtech
 Suggests: 
     testthat (>= 3.0.0),
     ggplot2,
@@ -38,6 +39,5 @@ Suggests:
     yfR,
     cowplot,
     hrbrthemes,
-    geobr,
-    ggtech
+    geobr
 Config/testthat/edition: 3
