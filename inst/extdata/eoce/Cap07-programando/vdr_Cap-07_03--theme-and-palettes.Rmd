@@ -20,7 +20,9 @@ df_yf <- yfR::yf_get(tickers,
 
 df_tab <- df_yf |>
   dplyr::group_by(ticker) |>
-  dplyr::summarise(total_ret = dplyr::last(cumret_adjusted_prices) - 1) |>
+  dplyr::summarise(
+    total_ret = dplyr::last(cumret_adjusted_prices) - 1
+    ) |>
   dplyr::arrange(total_ret)
 
 p <- ggplot(df_tab, aes(x = reorder(ticker, total_ret),
@@ -29,7 +31,9 @@ p <- ggplot(df_tab, aes(x = reorder(ticker, total_ret),
   geom_col(color = "white") + 
   theme_minimal() +
   coord_flip() + 
-  labs(title = stringr::str_glue("Performance de {length(tickers)} Ações Selecionadas"),
+  labs(title = stringr::str_glue(
+    "Performance de {length(tickers)} Ações Selecionadas"
+    ),
        y = "Retorno Total",
        x = "Ticker")
 ```

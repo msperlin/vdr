@@ -26,7 +26,7 @@
                   "Useful links:\n",
                   "\tAuthor site: ", cli::style_hyperlink(my_links$blog_site,
                                                        my_links$blog_site),
-                  "\n\tBook site: ", cli::style_hyperlink(my_links$book_blog_site,my_links$book_blog_site ),
+                  "\n\tBook online: ", cli::style_hyperlink(my_links$book_online, my_links$book_online ),
                   "\n\tAmazon site: ", cli::style_hyperlink(my_links$book_amazon_ebook,
                                                           my_links$book_amazon_ebook))
   } else {
