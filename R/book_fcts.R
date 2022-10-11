@@ -73,7 +73,7 @@ book_strings_get <- function() {
 
   l_out <- list(
     book_title = "Visualiza\\u00e7\\u00e3o de Dados com o R",
-    book_subtitle = "Aplica\\u00e7\\u00f5es em Finan\\u00e7as e Economia",
+    book_subtitle = "Aplica\\u00e7\\u00f5es para Finan\\u00e7as e Economia",
     publication_years = c(2022),
     publication_names = c("Edi\\u00e7 01"),
     author_name = "Marcelo S. Perlin",
