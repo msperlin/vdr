@@ -25,10 +25,12 @@
                   '\n\n',
                   "Useful links:\n",
                   "\tAuthor site: ", cli::style_hyperlink(my_links$blog_site,
-                                                       my_links$blog_site),
-                  "\n\tBook online: ", cli::style_hyperlink(my_links$book_online, my_links$book_online ),
-                  "\n\tAmazon site: ", cli::style_hyperlink(my_links$book_amazon_ebook,
-                                                          my_links$book_amazon_ebook))
+                                                          my_links$blog_site),
+                  "\n\tBook online (1-3 chapters): ", cli::style_hyperlink(my_links$book_online, my_links$book_online ),
+                  "\n\tAmazon site (full book): ", cli::style_hyperlink(my_links$book_amazon_ebook,
+                                                                        my_links$book_amazon_ebook),
+                  "\n\tExercise solutions: ", cli::style_hyperlink(my_links$exercises_solutions,
+                                                                   my_links$exercises_solutions))
   } else {
     msg <- ''
   }
