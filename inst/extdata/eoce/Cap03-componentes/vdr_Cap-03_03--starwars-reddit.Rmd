@@ -17,7 +17,7 @@ vdr::exercises_print_img(
   )
 ```
 
-Apesar de ser esteticamante interessante, o mesmo poderia ser melhorado. Com base no que aprendeu no livro, analise o gráfico e faça recomendações para  sua melhoria buscando claridade e simplicidade.
+Apesar de ser esteticamante interessante, o mesmo poderia ser melhorado. Com base no que aprendeu neste capítulo do livro, analise o gráfico e faça recomendações para  sua melhoria buscando sempre maior claridade e simplicidade.
 
 
 Solution
@@ -27,8 +27,8 @@ Assumindo que a mensagem do gráfico é o faturamente ano a ano de todos os film
 
 1. modificar o gráfico para um com o tempo no eixo horizontal, o qual é mais intuitivo ao mostrar o tempo evoluindo para a direita;
 1. usar barras verticais para cada filme, adicionando um texto com o "budget" de cada filme no topo de cada barra;
-1. remover as "espadas de laser", as quais não tem finalidade alguma na interpretação do gráfico e não adicionam informação relevante;
-1. usar cores para ressaltar os filmes com maiores faturamentos, possivelmente uma paleta de cores  divergente;
+1. remover as "espadas de laser" e outros elementos visuais desnecessários, as quais não tem finalidade alguma na interpretação do gráfico e não adicionam informação relevante;
+1. usar cores para ressaltar os filmes com maiores faturamentos, possivelmente com uma paleta de cores de intensidade;
 
 
 Meta-information

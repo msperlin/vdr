@@ -9,7 +9,7 @@ library(ggplot2)
 library(tidyverse)
 
 first_date <- '2005-01-01'
-last_date <- '2022-07-01'
+last_date <- '2022-10-01'
 
 # inflation
 df_inflation <- gbcbd_get_series(
@@ -30,7 +30,7 @@ write_csv(df_inflation, fs::path(data_dir, f_out ))
 
 ## Petrobras Stock Price ---
 first_date <- '2015-01-01'
-last_date <- '2022-05-01'
+last_date <- '2022-10-15'
 
 df_single <- yfR::yf_get(
   tickers = 'PETR3.SA',
@@ -48,7 +48,7 @@ write_csv(df_single, fs::path(data_dir, f_out ))
 
 ## Ibovespa and PETR3
 first_date <- '2015-01-01'
-last_date <- '2022-05-01'
+last_date <- '2022-10-15'
 
 tickers <- c('^BVSP', 'PETR3.SA')
 
@@ -68,7 +68,7 @@ write_csv(df_yf , fs::path(data_dir, f_out ))
 
 # EGIE3
 first_date <- '2016-01-01'
-last_date <- '2022-05-01'
+last_date <- '2022-10-15'
 df <- yfR::yf_get(
   'EGIE3.SA',
   first_date = first_date,

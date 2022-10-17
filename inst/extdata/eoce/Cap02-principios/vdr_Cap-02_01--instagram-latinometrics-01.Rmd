@@ -8,7 +8,7 @@ knitr::opts_chunk$set(eval = vdr_run_chunks,
 Question
 ========
 
-O grupo [LatinoMetrics](https://latinometrics.substack.com/) produz e distribui um conteúdo muito interessante de visualização de dados econômicos para a América Latina. Observando o material do [Instagram](https://www.instagram.com/latinometrics/), visualize as seis últimas imagens disponibilizadas na página principal. Observando as figuras como um todo, destaque os elementos estruturais utilizados na criação das imagens. Isto, é, destaque os elementos visuais que foram repetidos entre uma figura e outra.
+O grupo [LatinoMetrics](https://latinometrics.substack.com/) produz e distribui um conteúdo muito interessante de visualização de dados econômicos para a América Latina. Observando o material do [Instagram](https://www.instagram.com/latinometrics/), visualize as seis últimas imagens disponibilizadas na página principal. Observando as figuras como um todo, destaque os elementos comuns na criação das imagens. Isto, é, destaque os elementos visuais que foram repetidos entre uma figura e outra.
 
 
 Solution

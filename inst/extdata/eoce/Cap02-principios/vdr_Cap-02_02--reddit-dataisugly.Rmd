@@ -23,8 +23,7 @@ Analise o gráfico e, sem buscar a resposta no fórum, indique qual o problema c
 Solution
 ================
 
-O problema do gráfico é a escala errada para o eixo vertical. Note que o valor de 20% é compartilhado pelo candidatos **Garcia** e **Tarcísio**, porém em localizações muito diferentes. É impossível de dizer se foi erro do programador ou alguma intenção política. Porém, o visual do gráfico indica, para os mesmos pontos de dados, mais peso visual para um candidato do que para o outro.
-
+O problema do gráfico é a escala errada para o eixo vertical. Note que o valor de 20% é compartilhado pelo candidatos **Garcia** e **Tarcísio**, porém em localizações muito diferentes! É impossível de dizer se foi erro do programador ou alguma intenção política. Porém, o visual do gráfico indica, para os mesmos pontos de dados, mais peso visual para um candidato do que para o outro.
 
 
 Meta-information
