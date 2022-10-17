@@ -6,7 +6,7 @@ knitr::opts_chunk$set(eval = vdr_run_chunks)
 Question
 ========
 
-Em um novo script do R, crie um vetor de valores aleatórios da distribuição Normal com o comando `rnorm(N)`, onde N é igual a 100. Agora, crie um gráfico de pontos onde o eixo _y_ é representado pela série anterior, e o eixo _x_ é simplesmente a contagem dos valores (1..100). Para este gráfico, utilize o _template_ básico do `ggplot2`, isto é, não precisas modificar nenhum elemento textual do gráfico.
+Em um novo script do R, crie um vetor de valores aleatórios da distribuição Normal com o comando `rnorm(N)`, onde N é igual a 100. Agora, crie um gráfico de pontos onde o eixo _y_ é representado pela série anterior, e o eixo _x_ é simplesmente a contagem dos valores (1..100). Para este gráfico, utilize o _template_ básico do `ggplot2`, isto é, não precisas modificar nenhum elemento textual do gráfico, por enquanto.
 
 
 Solution

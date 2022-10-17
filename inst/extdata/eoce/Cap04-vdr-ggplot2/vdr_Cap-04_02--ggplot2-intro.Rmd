@@ -5,12 +5,12 @@
 Question
 ========
 
-Para o gráfico anterior, adicione os sequintes elementos textuais e gráficos:
+Para o gráfico anterior, adicione os seguintes elementos textuais e gráficos:
 
 - título, subtítulo;
 - _caption_ com a data e tempo de compilação do gráfico;
-- texto nos eixos _x_ e _y_;
-- tema `theme_light`
+- textos nos eixos _x_ e _y_;
+- aplique o tema `theme_light`
 
 Solution
 ================

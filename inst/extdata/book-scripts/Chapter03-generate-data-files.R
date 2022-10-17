@@ -2,14 +2,6 @@
 
 data_dir <- 'inst/extdata/data/'
 
-# Inflation ----
-library(GetBCBData)
-library(ggplot2)
-library(tidyverse)
-
-first_date <- '2018-01-01'
-last_date <- '2022-07-01'
-
 ## BVSP, SP500, FTSE
 first_date <- '2015-01-01'
 last_date <- '2022-05-01'

@@ -5,7 +5,7 @@
 Question
 ========
 
-Agora, modifique o código para que o tamanho dos pontos seja relativo a coluna `x` do dataframe de entrada. Isto é, o efeito desajdo é que os pontos aumentem de tamanho ao longo do eixo horizontal.
+Agora, modifique o código para que o tamanho dos pontos seja relativo a coluna `x` do dataframe de entrada. Isto é, o efeito desejado é que os pontos aumentem de tamanho ao longo do eixo horizontal.
 
 
 Solution
