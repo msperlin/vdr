@@ -21,7 +21,7 @@ p <- ggplot(
 
 ```
 
-Pacote `hrbrthemes` oferece uma grande variedade de temas adicionais a serem utilizados em um gráfico do `ggplot2`. Todas funções de tema possum um padrão bem distinto, onde inicial o nome com o texto `theme_`. Baseado nesta informação e também no uso da função `ls`, podemos descobrir o nome de todas as funções de tema do `hrbrthemes` com o código abaixo:
+Pacote `hrbrthemes` oferece uma grande variedade de temas adicionais a serem utilizados em um gráfico do `ggplot2`. Todas funções de tema possum um padrão bem distinto, onde o nome da função inicia com o texto `theme_`. Baseado nesta informação e também no uso da função `ls`, podemos descobrir o nome de todas as funções de tema do `hrbrthemes` com o código abaixo:
 
 ```{r, echo=TRUE, eval=FALSE}
 library(hrbrthemes)

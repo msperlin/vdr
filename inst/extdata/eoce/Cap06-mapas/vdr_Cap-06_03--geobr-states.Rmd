@@ -6,7 +6,7 @@
 Question
 ========
 
-Utilizando função geobr::read_state()`, baixe os dados de todos os estados do Brasil e, em um mapa do país, mostre os limites de cada estado na cor azul. 
+Utilizando função `geobr::read_state()`, baixe os dados de todos os estados do Brasil e, em um mapa do país, mostre os limites de cada estado na cor azul. 
 
 
 Solution

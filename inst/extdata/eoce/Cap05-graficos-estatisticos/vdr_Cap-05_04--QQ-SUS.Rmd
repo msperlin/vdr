@@ -5,12 +5,14 @@
 Question
 ========
 
-Para os mesmos dados de mortalidade retirados do SUS, crie um gráfico QQ com a distribuição de idades de falecimento.
+Para os mesmos dados de mortalidade retirados do SUS, crie um gráfico QQ com a distribuição de idades de falecimento (coluna `age`).
 
 Solution
 ================
 
 ```{r solution}
+library(ggplot2)
+
 df_sus <- vdr::data_import("Exercises-sus-mortality-data.csv")
 
 p <- ggplot(df_sus , aes(sample = age)) + 

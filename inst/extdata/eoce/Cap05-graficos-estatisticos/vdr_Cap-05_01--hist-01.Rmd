@@ -6,7 +6,7 @@
 Question
 ========
 
-Utilizando o pacote `yfR`, baixe os dados dos preços da Grendene, ticker = _GRND3.SA_, desde 2015 até o dia atual. Com base nos dados importados, crie um histograma dos retornos diários da ação.
+Utilizando o pacote `yfR`, baixe os dados dos preços da Grendene, ticker = _GRND3.SA_, desde 2015 até o data atual. Com base nos dados importados, crie um histograma dos retornos diários dos preços ajustados da ação (coluna `ret_adjusted_prices`).
 
 
 Solution

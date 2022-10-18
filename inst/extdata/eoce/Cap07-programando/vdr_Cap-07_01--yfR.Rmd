@@ -6,13 +6,16 @@
 Question
 ========
 
-O código abaixo irá criar um gráfico simples com os preços da ação da empresa Engie. 
+O código abaixo irá criar um gráfico simples com os preços da ação da empresa Engie (_EGIE.SA_). 
 
 ```{r, echo=TRUE}
 library(ggplot2)
 
+df_yf <- yfR::yf_get("EGIE3.SA", 
+              first_date = "2018-01-01")
+
 p <- ggplot(
-  yfR::yf_get("EGIE3.SA", first_date = "2018-01-01"),
+  df_yf,
   aes(x = ref_date, y = price_adjusted)
 ) + geom_line()
 ```

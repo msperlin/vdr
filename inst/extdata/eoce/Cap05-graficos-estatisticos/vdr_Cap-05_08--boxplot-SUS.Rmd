@@ -11,6 +11,9 @@ Solution
 ================
 
 ```{r solution}
+library(ggplot2)
+library(stringr)
+
 df_sus <- vdr::data_import("Exercises-sus-mortality-data.csv")
 
 p <- ggplot(df_sus , aes(x = ESC, y = age)) + 

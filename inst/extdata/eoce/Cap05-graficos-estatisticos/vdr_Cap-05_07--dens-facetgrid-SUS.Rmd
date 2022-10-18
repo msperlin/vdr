@@ -5,13 +5,16 @@
 Question
 ========
 
-Considerando novamente os dados do SUS, use o comando `facet_grid` para mostrar as densidades de idade de falecimento quando separando os dados por gênero (coluna SEXO) e escolariedade (coluna ESC). DICA: remova os casos de NA (_Not Available_) encontrados em ambas colunas, SEXO e ESC.
+Considerando novamente os dados do SUS, use o comando `facet_grid` para mostrar as densidades de idade de falecimento quando separando os dados por gênero (coluna SEXO) e escolaridade (coluna ESC). DICA: remova os casos de NA (_Not Available_) encontrados em ambas colunas, SEXO e ESC.
 
 
 Solution
 ================
 
 ```{r solution}
+library(ggplot2)
+library(stringr)
+
 df_sus <- vdr::data_import("Exercises-sus-mortality-data.csv")
 
 p <- ggplot(df_sus , aes(x = age)) + 
