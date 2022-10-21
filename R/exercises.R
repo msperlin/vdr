@@ -117,7 +117,7 @@ exercises_dir_get <- function(name_dir) {
 #'
 #' @examples
 #' exercises_dir_list()
-exercises_dir_list <- function(silent = FALSE) {
+exercises_dir_list <- function(silent = TRUE) {
   package_dir <- system.file("extdata/eoce",
                              package = "vdr")
 

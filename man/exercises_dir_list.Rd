@@ -4,7 +4,7 @@
 \alias{exercises_dir_list}
 \title{Lists available eoc dir}
 \usage{
-exercises_dir_list(silent = FALSE)
+exercises_dir_list(silent = TRUE)
 }
 \arguments{
 \item{silent}{be silent?}
