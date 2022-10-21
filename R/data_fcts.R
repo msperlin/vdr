@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' data_list()
-data_list <- function(be_silent = FALSE) {
+data_list <- function(be_silent = TRUE) {
 
   path_data <- system.file('extdata/data', package = 'vdr')
 
