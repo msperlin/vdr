@@ -11,9 +11,9 @@
 links_get <- function() {
 
   my_l <- list(book_blog_vdr  = 'https://www.msperlin.com/blog/publication/2022_book-vdr/',
-               book_amazon_ebook = "https://www.msperlin.com/vdr", #TODO
-               book_amazon_print = "https://www.msperlin.com/vdr", #TODO
-               book_amazon_hardcover = "https://www.msperlin.com/vdr", #TODO
+               book_amazon_ebook = "https://www.amazon.com.br/dp/B0BK2V4HTB",
+               book_amazon_print = "https://www.amazon.com/dp/B0BJYJQ92Q",
+               book_amazon_hardcover = "https://www.amazon.com/dp/B0BJYMHWLN",
                book_github_vdr = 'https://github.com/msperlin/vdr',
                book_online = "https://www.msperlin.com/vdr",
                blog_site = 'https://www.msperlin.com/blog',
